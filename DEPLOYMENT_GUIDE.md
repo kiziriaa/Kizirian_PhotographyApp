@@ -10,8 +10,9 @@
    - Click "Add new site" → "Import an existing project"
    - Connect to GitHub and select your `Kizirian_PhotographyApp` repository
    - Branch: `main`
-   - Build command: `cd frontend && npm run build`
-   - Publish directory: `frontend/dist`
+   - **Build settings** (should auto-detect from netlify.toml):
+     - Build command: `cd frontend && npm install && npm run build`
+     - Publish directory: `frontend/dist`
 4. **Deploy**: Click "Deploy site"
 5. **Upgrade to Pro**: 
    - Go to Site settings → Plans and billing
