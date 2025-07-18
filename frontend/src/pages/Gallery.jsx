@@ -20,13 +20,13 @@ const toImageObjects = (importObj, category) =>
     category,
     // Add pricing based on category - only nature photos are for sale
     prints: (category === "Landscapes" || category === "Wildlife") ? {
-      digital: 15,
-      print8x10: 25,
-      print11x14: 35,
-      print16x20: 55,
-      canvas: 85,
-      metal: 95,
-      licensing: 150
+      digital: { price: 15, shipping: 0, description: "Instant download" },
+      print8x10: { price: 25, shipping: 8, description: "8x10 Professional Print" },
+      print11x14: { price: 35, shipping: 10, description: "11x14 Professional Print" },
+      print16x20: { price: 55, shipping: 15, description: "16x20 Professional Print" },
+      canvas: { price: 85, shipping: 20, description: "Canvas Gallery Wrap" },
+      metal: { price: 95, shipping: 25, description: "Metal Print with Float Mount" },
+      licensing: { price: 150, shipping: 0, description: "Commercial License" }
     } : null,
     available: category === "Landscapes" || category === "Wildlife" // Only landscapes and wildlife are for sale
   }));
@@ -202,6 +202,8 @@ Thank you!`;
               <p className="mb-0">Professional landscape and wildlife photography available for purchase.</p>
               <small className="text-muted d-block mt-1">
                 <strong>Available formats:</strong> Digital downloads, Canvas prints, Metal prints, Traditional prints
+                <br />
+                <strong>Shipping:</strong> Included in print prices • Digital downloads instant
               </small>
             </div>
           )}
@@ -374,21 +376,35 @@ Thank you!`;
                       onClick={() => sendPurchaseInquiry(selectedImage, "8x10 Print")}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
-                      8x10 Print - $25
+                      8x10 - $33 (inc. shipping)
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "11x14 Print")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      11x14 - $45 (inc. shipping)
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "16x20 Print")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      16x20 - $70 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
                       onClick={() => sendPurchaseInquiry(selectedImage, "Canvas Print")}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
-                      Canvas - $85
+                      Canvas - $105 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
                       onClick={() => sendPurchaseInquiry(selectedImage, "Metal Print")}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
-                      Metal - $95
+                      Metal - $120 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-secondary btn-sm"
