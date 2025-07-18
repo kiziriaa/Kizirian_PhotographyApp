@@ -305,8 +305,8 @@ function Booking() {
   return (
     <div className="container py-5">
       <div className="text-center mb-5">
-        <h1 className="display-4 fw-bold">Book a Session</h1>
-        <p className="lead text-muted">Schedule your professional photography session with ease</p>
+        <h1>Book a Session</h1>
+        <p className="lead">Schedule your professional photography session with ease</p>
       </div>
 
       {/* Early Bird Promotion - Top Banner */}

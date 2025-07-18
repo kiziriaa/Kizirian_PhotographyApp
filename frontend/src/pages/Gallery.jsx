@@ -164,8 +164,8 @@ Thank you!`;
     <div className="container py-5">
       {/* Hero Section */}
       <div className="text-center mb-5">
-        <h1 className="display-4 fw-bold">Photography Gallery</h1>
-        <p className="lead text-muted">
+        <h1>Photography Gallery</h1>
+        <p className="lead">
           Explore our portfolio of portraits, breathtaking landscapes, and wildlife photography
         </p>
       </div>
@@ -210,36 +210,34 @@ Thank you!`;
         </div>
       </div>
 
-      {/* Sub-Category Filters */}
-      <div className="row mb-4">
+      {/* Sub-Category Filters - Professional Style */}
+      <div className="row mb-5">
         <div className="col-12">
-          <div className="d-flex justify-content-center mb-3">
-            <div className="btn-group" role="group">
-              {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories).map((cat) => (
-                <button
-                  key={cat.name}
-                  className={`btn btn-outline-secondary ${activeSubCategory === cat.name ? "active" : ""}`}
-                  onClick={() => setActiveSubCategory(cat.name)}
-                >
-                  {cat.name.replace("All Portfolio", "All").replace("All Prints", "All")}
-                  <span className="badge bg-secondary ms-2">
-                    {activeMainCategory === "Portfolio" ? 
-                      (cat.name === "All Portfolio" ? images.filter(img => 
-                        img.category === "People" || 
-                        img.category === "Professional Headshots" || 
-                        img.category === "Family Photos" || 
-                        img.category === "Band Photos" || 
-                        img.category === "Real Estate Photos" || 
-                        img.category === "Pet Photos"
-                      ).length :
-                       images.filter(img => img.category === cat.name).length) :
-                      (cat.name === "All Prints" ? images.filter(img => img.category === "Landscapes" || img.category === "Wildlife").length :
-                       images.filter(img => img.category === cat.name).length)
-                    }
-                  </span>
-                </button>
-              ))}
-            </div>
+          <div className="filter-buttons">
+            {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories).map((cat) => (
+              <button
+                key={cat.name}
+                className={`filter-btn ${activeSubCategory === cat.name ? "active" : ""}`}
+                onClick={() => setActiveSubCategory(cat.name)}
+              >
+                {cat.name.replace("All Portfolio", "All").replace("All Prints", "All")}
+                <span className="badge ms-2">
+                  {activeMainCategory === "Portfolio" ? 
+                    (cat.name === "All Portfolio" ? images.filter(img => 
+                      img.category === "People" || 
+                      img.category === "Professional Headshots" || 
+                      img.category === "Family Photos" || 
+                      img.category === "Band Photos" || 
+                      img.category === "Real Estate Photos" || 
+                      img.category === "Pet Photos"
+                    ).length :
+                     images.filter(img => img.category === cat.name).length) :
+                    (cat.name === "All Prints" ? images.filter(img => img.category === "Landscapes" || img.category === "Wildlife").length :
+                     images.filter(img => img.category === cat.name).length)
+                  }
+                </span>
+              </button>
+            ))}
           </div>
           <div className="text-center text-muted">
             {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories)
@@ -253,11 +251,9 @@ Thank you!`;
         {filtered.map((img, idx) => (
           <div className="col-6 col-md-4 col-lg-3" key={idx}>
             <div
-              className="card shadow-sm border-0 position-relative"
+              className="gallery-card position-relative"
               onClick={() => handleImageClick(img)}
-              style={{ cursor: "pointer", transition: "transform 0.2s" }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+              style={{ cursor: "pointer" }}
             >
               <div className="position-relative">
                 <img
@@ -307,9 +303,9 @@ Thank you!`;
 
       {/* Enhanced Modal View */}
       {selectedImage && (
-        <div className="modal-backdrop" onClick={() => setSelectedImage(null)}>
+        <div className="gallery-modal-backdrop" onClick={() => setSelectedImage(null)}>
           <div
-            className="modal-content"
+            className="gallery-modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{
               padding: "1rem",

@@ -50,8 +50,8 @@ function Contact() {
     <div className="container py-5">
       {/* Header Section */}
       <div className="text-center mb-5">
-        <h1 className="display-4 fw-bold">Get in Touch</h1>
-        <p className="lead text-muted">
+        <h1>Get in Touch</h1>
+        <p className="lead">
           Have questions about our services, want to discuss your vision, or ready to book? 
           We'd love to hear from you! Send us a message and we'll respond within 24 hours.
         </p>

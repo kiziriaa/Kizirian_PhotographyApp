@@ -8,8 +8,8 @@ function Home() {
     <div className="container py-5">
       {/* Hero Section */}
       <div className="text-center mb-5">
-        <h1 className="display-4 fw-bold">Capturing Moments That Matter</h1>
-        <p className="lead text-muted">
+        <h1>Capturing Moments That Matter</h1>
+        <p className="lead">
           At Kizirian Photography, we believe every family, every face, and every moment tells a story. Our mission is to bring those stories to life through timeless, heartfelt imagery.
         </p>
         <div className="mt-4">
@@ -31,7 +31,7 @@ function Home() {
       {/* Services Section */}
       <div className="row mb-5">
         <div className="col-12 text-center mb-4">
-          <h2 className="display-5">Our Services</h2>
+          <h2>Our Services</h2>
           <p className="text-muted">Professional photography for every occasion</p>
         </div>
         <div className="col-md-4 mb-4">
@@ -87,7 +87,7 @@ function Home() {
       {/* Why Choose Us Section */}
       <div className="row mb-5">
         <div className="col-12 text-center mb-4">
-          <h2 className="display-5">Why Choose Kizirian Photography?</h2>
+          <h2>Why Choose Kizirian Photography?</h2>
         </div>
         <div className="col-md-4 text-center mb-4">
           <div className="display-1 text-warning">⚡</div>

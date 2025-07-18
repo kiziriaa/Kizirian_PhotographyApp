@@ -32,6 +32,7 @@
   --bg-card: rgba(255, 255, 255, 0.95);
   --bg-navbar: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   --bg-overlay: rgba(255, 255, 255, 0.15);
+  --modal-backdrop: rgba(248, 248, 248, 0.95);
   
   --text-primary: #2c3e50;
   --text-secondary: #5d6d7e;
@@ -57,6 +58,7 @@
   --bg-card: rgba(60, 40, 24, 0.95);
   --bg-navbar: linear-gradient(135deg, #8b4513 0%, #a0522d 50%, #654321 100%);
   --bg-overlay: rgba(0, 0, 0, 0.3);
+  --modal-backdrop: rgba(44, 24, 16, 0.9);
   
   --text-primary: #f4f1ed;
   --text-secondary: #d1c4b0;
@@ -277,10 +279,18 @@ p, .form-text, small {
   color: var(--text-primary) !important;
   transition: color var(--transition-normal);
   font-family: var(--font-body);
+  font-weight: 600;
+}
+
+[data-theme='light'] .navbar-light .navbar-brand,
+[data-theme='light'] .navbar-light .navbar-nav .nav-link {
+  color: var(--text-primary) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
   color: var(--accent-primary) !important;
+  font-weight: 700;
 }
 
 /* Form Styles */
