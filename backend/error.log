@@ -1,0 +1,27 @@
+[2025-07-14T23:02:59.718Z] Email sending failed: Invalid login: 535 5.7.3 Authentication unsuccessful [SN7P222CA0012.NAMP222.PROD.OUTLOOK.COM 2025-07-14T23:02:59.572Z 08DDC29081C0B8F4]
+[2025-07-14T23:06:46.497Z] Email sending failed: Invalid login: 535 5.7.3 Authentication unsuccessful [SN7PR04CA0041.namprd04.prod.outlook.com 2025-07-14T23:06:46.343Z 08DDC28E6AE9BD9B]
+[2025-07-14T23:09:15.907Z] Email sending failed: Invalid login: 535 5.7.3 Authentication unsuccessful [SA1P222CA0121.NAMP222.PROD.OUTLOOK.COM 2025-07-14T23:09:15.748Z 08DDC2C22B3642F9]
+[2025-07-15T00:41:58.421Z] Email sending failed: Invalid login: 535 5.7.3 Authentication unsuccessful [SN4PR0501CA0011.namprd05.prod.outlook.com 2025-07-15T00:41:58.026Z 08DDC32C15F03E00]
+[2025-07-15T00:42:31.828Z] Email sending failed: Invalid login: 535 5.7.3 Authentication unsuccessful [SN4PR0501CA0025.namprd05.prod.outlook.com 2025-07-15T00:42:31.431Z 08DDC2A10B7384C0]
+[2025-07-15T00:44:11.720Z] Email sending failed: getaddrinfo ENOTFOUND gmail
+[2025-07-15T00:52:47.139Z] Email sending failed: getaddrinfo ENOTFOUND gmail
+[2025-07-15T00:59:47.684Z] Email sending failed: getaddrinfo ENOTFOUND gmail
+[2025-07-15T01:03:59.660Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717c5d4f877sm22334397b3.5 - gsmtp
+[2025-07-15T01:05:56.996Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 3f1490d57ef6-e8b7afa7631sm3329008276.37 - gsmtp
+[2025-07-15T01:06:10.037Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717c5d710d1sm21922997b3.33 - gsmtp
+[2025-07-15T01:09:39.652Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717c5d6bbbesm22057217b3.26 - gsmtp
+[2025-07-15T01:11:54.715Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717e4590f5dsm15588027b3.90 - gsmtp
+[2025-07-15T01:12:05.120Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717c5d8943csm22005517b3.51 - gsmtp
+[2025-07-15T01:24:06.588Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 3f1490d57ef6-e8b881924b2sm2607677276.54 - gsmtp
+[2025-07-15T01:24:23.067Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 3f1490d57ef6-e8b7aff1314sm3241160276.53 - gsmtp
+[2025-07-15T01:30:49.783Z] Email sending failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 00721157ae682-717d5de461bsm18755627b3.88 - gsmtp
+[2025-07-18T04:02:44.796Z] Booking failed: Google Calendar API has not been used in project 1099372729982 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/calendar-json.googleapis.com/overview?project=1099372729982 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.

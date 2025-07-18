@@ -1,18 +1,18 @@
-# Use Node.js base image
-FROM node:18-bullseye
+# Use Node 20, which works well with Vite 5+
+FROM node:20-slim
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Install dependencies
+# Copy package info and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the app
+# Copy rest of the app
 COPY . .
 
-# Expose the Vite default port
+# Expose Vite dev port
 EXPOSE 5173
 
-# Start the dev server (hosted mode allows external access)
+# Run Vite dev server
 CMD ["npm", "run", "dev", "--", "--host"]

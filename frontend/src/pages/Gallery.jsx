@@ -1,0 +1,462 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
+
+// Dynamically import all images from these folders
+const landscapeImports = import.meta.glob("../assets/Landscapes/*.{jpg,jpeg,png}", { eager: true });
+const peopleImports = import.meta.glob("../assets/People/*.{jpg,jpeg,png}", { eager: true });
+const wildlifeImports = import.meta.glob("../assets/Wildlife/*.{jpg,jpeg,png}", { eager: true });
+const headshotsImports = import.meta.glob("../assets/Headshots/*.{jpg,jpeg,png}", { eager: true });
+const familyImports = import.meta.glob("../assets/Family/*.{jpg,jpeg,png}", { eager: true });
+const bandsImports = import.meta.glob("../assets/Bands/*.{jpg,jpeg,png}", { eager: true });
+const realEstateImports = import.meta.glob("../assets/RealEstate/*.{jpg,jpeg,png}", { eager: true });
+const petsImports = import.meta.glob("../assets/Pets/*.{jpg,jpeg,png}", { eager: true });
+
+// Convert imports into structured image objects with pricing info
+const toImageObjects = (importObj, category) =>
+  Object.entries(importObj).map(([path, mod]) => ({
+    src: mod.default,
+    filename: path.split("/").pop(),
+    category,
+    // Add pricing based on category - only nature photos are for sale
+    prints: (category === "Landscapes" || category === "Wildlife") ? {
+      digital: 15,
+      print8x10: 25,
+      print11x14: 35,
+      print16x20: 55,
+      canvas: 85,
+      metal: 95,
+      licensing: 150
+    } : null,
+    available: category === "Landscapes" || category === "Wildlife" // Only landscapes and wildlife are for sale
+  }));
+
+const images = [
+  ...toImageObjects(landscapeImports, "Landscapes"),
+  ...toImageObjects(peopleImports, "People"),
+  ...toImageObjects(wildlifeImports, "Wildlife"),
+  ...toImageObjects(headshotsImports, "Professional Headshots"),
+  ...toImageObjects(familyImports, "Family Photos"),
+  ...toImageObjects(bandsImports, "Band Photos"),
+  ...toImageObjects(realEstateImports, "Real Estate Photos"),
+  ...toImageObjects(petsImports, "Pet Photos"),
+];
+
+const mainCategories = [
+  { name: "Portfolio", description: "Professional portrait work and session examples" },
+  { name: "Print Shop", description: "Fine art prints available for purchase" }
+];
+
+const portfolioCategories = [
+  { name: "All Portfolio", description: "All professional portrait work" },
+  { name: "People", description: "Portrait sessions" },
+  { name: "Professional Headshots", description: "Corporate and personal headshots" },
+  { name: "Family Photos", description: "Family portrait sessions" },
+  { name: "Band Photos", description: "Music and band photography" },
+  { name: "Real Estate Photos", description: "Property and architectural photography" },
+  { name: "Pet Photos", description: "Pet and animal photography" }
+];
+
+const printCategories = [
+  { name: "All Prints", description: "All available prints" },
+  { name: "Landscapes", description: "Nature & scenery prints" },
+  { name: "Wildlife", description: "Animal & nature prints" }
+];
+
+function Gallery() {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedOrientation, setSelectedOrientation] = useState("landscape");
+  const [activeMainCategory, setActiveMainCategory] = useState("Portfolio");
+  const [activeSubCategory, setActiveSubCategory] = useState("All Portfolio");
+  const [viewCounts, setViewCounts] = useState({});
+  const [orientationMap, setOrientationMap] = useState({});
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+
+  useEffect(() => {
+    const preloadAndDetect = async () => {
+      const map = {};
+      for (const img of images) {
+        const imageObj = new Image();
+        imageObj.src = img.src;
+        await new Promise((res) => {
+          imageObj.onload = () => {
+            map[img.src] =
+              imageObj.naturalHeight > imageObj.naturalWidth
+                ? "portrait"
+                : "landscape";
+            res();
+          };
+        });
+      }
+      setOrientationMap(map);
+    };
+    preloadAndDetect();
+  }, []);
+
+  // Filter images based on main category and sub-category
+  const getFilteredImages = () => {
+    if (activeMainCategory === "Portfolio") {
+      if (activeSubCategory === "All Portfolio") {
+        return images.filter(img => 
+          img.category === "People" || 
+          img.category === "Professional Headshots" || 
+          img.category === "Family Photos" || 
+          img.category === "Band Photos" || 
+          img.category === "Real Estate Photos" || 
+          img.category === "Pet Photos"
+        );
+      } else {
+        return images.filter(img => img.category === activeSubCategory);
+      }
+    } else { // Print Shop
+      if (activeSubCategory === "All Prints") {
+        return images.filter(img => img.category === "Landscapes" || img.category === "Wildlife");
+      } else {
+        return images.filter(img => img.category === activeSubCategory);
+      }
+    }
+  };
+
+  const filtered = getFilteredImages();
+
+  // Handle main category changes
+  const handleMainCategoryChange = (category) => {
+    setActiveMainCategory(category);
+    if (category === "Portfolio") {
+      setActiveSubCategory("All Portfolio");
+    } else {
+      setActiveSubCategory("All Prints");
+    }
+  };
+
+  const handleImageClick = (img) => {
+    setSelectedImage(img);
+    setViewCounts((prev) => ({
+      ...prev,
+      [img.src]: (prev[img.src] || 0) + 1,
+    }));
+    setSelectedOrientation(orientationMap[img.src] || "landscape");
+  };
+
+  const handlePurchaseClick = (e) => {
+    e.stopPropagation();
+    setShowPurchaseModal(true);
+  };
+
+  const sendPurchaseInquiry = (img, productType) => {
+    const subject = `Purchase Inquiry - ${img.filename}`;
+    const body = `Hi Alex,
+
+I'm interested in purchasing "${img.filename}" as a ${productType}.
+
+Please let me know about:
+- Available sizes and pricing
+- Payment methods
+- Delivery options
+- Any customization options
+
+Thank you!`;
+    
+    window.location.href = `mailto:kizirianphotography@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <div className="container py-5">
+      {/* Hero Section */}
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold">Photography Gallery</h1>
+        <p className="lead text-muted">
+          Explore our portfolio of portraits, breathtaking landscapes, and wildlife photography
+        </p>
+      </div>
+
+      {/* Main Category Tabs */}
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="d-flex justify-content-center mb-4">
+            <div className="btn-group btn-group-lg" role="group">
+              {mainCategories.map((cat) => (
+                <button
+                  key={cat.name}
+                  className={`btn btn-outline-primary ${activeMainCategory === cat.name ? "active" : ""}`}
+                  onClick={() => handleMainCategoryChange(cat.name)}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Conditional Banner Based on Active Tab */}
+          {activeMainCategory === "Portfolio" ? (
+            <div className="alert alert-info text-center mb-4">
+              <h5 className="mb-2">Professional Portfolio</h5>
+              <p className="mb-0">Examples of our portrait work and session styles. Ready to book your own session?</p>
+              <Link to="/booking" className="btn btn-primary btn-sm mt-2">
+                Book Your Session
+              </Link>
+            </div>
+          ) : (
+            <div className="alert alert-success text-center mb-4">
+              <h5 className="mb-2">Fine Art Print Shop</h5>
+              <p className="mb-0">Professional landscape and wildlife photography available for purchase.</p>
+              <small className="text-muted d-block mt-1">
+                <strong>Available formats:</strong> Digital downloads, Canvas prints, Metal prints, Traditional prints
+              </small>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Sub-Category Filters */}
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="d-flex justify-content-center mb-3">
+            <div className="btn-group" role="group">
+              {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories).map((cat) => (
+                <button
+                  key={cat.name}
+                  className={`btn btn-outline-secondary ${activeSubCategory === cat.name ? "active" : ""}`}
+                  onClick={() => setActiveSubCategory(cat.name)}
+                >
+                  {cat.name.replace("All Portfolio", "All").replace("All Prints", "All")}
+                  <span className="badge bg-secondary ms-2">
+                    {activeMainCategory === "Portfolio" ? 
+                      (cat.name === "All Portfolio" ? images.filter(img => 
+                        img.category === "People" || 
+                        img.category === "Professional Headshots" || 
+                        img.category === "Family Photos" || 
+                        img.category === "Band Photos" || 
+                        img.category === "Real Estate Photos" || 
+                        img.category === "Pet Photos"
+                      ).length :
+                       images.filter(img => img.category === cat.name).length) :
+                      (cat.name === "All Prints" ? images.filter(img => img.category === "Landscapes" || img.category === "Wildlife").length :
+                       images.filter(img => img.category === cat.name).length)
+                    }
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="text-center text-muted">
+            {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories)
+              .find(cat => cat.name === activeSubCategory)?.description}
+          </div>
+        </div>
+      </div>
+
+      {/* Image Grid */}
+      <div className="row g-4">
+        {filtered.map((img, idx) => (
+          <div className="col-6 col-md-4 col-lg-3" key={idx}>
+            <div
+              className="card shadow-sm border-0 position-relative"
+              onClick={() => handleImageClick(img)}
+              style={{ cursor: "pointer", transition: "transform 0.2s" }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+            >
+              <div className="position-relative">
+                <img
+                  src={img.src}
+                  alt={img.filename}
+                  className="card-img-top img-fluid rounded"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <div className="watermark">© Kizirian Photography</div>
+                
+                {/* Purchase Button for Available Images */}
+                {img.available && (
+                  <div className="position-absolute top-0 end-0 m-2">
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={handlePurchaseClick}
+                      style={{ fontSize: "0.75rem" }}
+                    >
+                      Buy Print
+                    </button>
+                  </div>
+                )}
+                
+                {/* Category Badge */}
+                <div className="position-absolute bottom-0 start-0 m-2">
+                  <span className="badge bg-primary">{img.category}</span>
+                </div>
+              </div>
+              
+              <div className="card-footer text-muted small">
+                <div className="d-flex justify-content-between align-items-center">
+                  <span>Views: {viewCounts[img.src] || 0}</span>
+                  {img.available && (
+                    <span className="text-success">
+                      <small>From $15</small>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Enhanced Modal View */}
+      {selectedImage && (
+        <div className="modal-backdrop" onClick={() => setSelectedImage(null)}>
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              width: "95vw",
+              height: "95vh",
+              maxWidth: "95vw",
+              maxHeight: "95vh",
+              margin: "0 auto",
+              overflow: "hidden"
+            }}
+          >
+            <button className="close-btn" onClick={() => setSelectedImage(null)}>×</button>
+            <div 
+              className="image-container" 
+              style={{ 
+                width: "100%", 
+                height: "70%", 
+                display: "flex", 
+                justifyContent: "center", 
+                alignItems: "center",
+                marginBottom: "1rem"
+              }}
+            >
+              <img
+                src={selectedImage.src}
+                alt="enlarged"
+                className="modal-img"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  borderRadius: "8px"
+                }}
+              />
+            </div>
+            <div className="text-center" style={{ maxHeight: "25%", overflowY: "auto" }}>
+              <div className="text-muted small mb-2">
+                {selectedImage.filename.replace(/\.[^/.]+$/, "")}
+              </div>
+              <div className="d-flex justify-content-center gap-2 mb-2">
+                <span className="badge bg-primary">{selectedImage.category}</span>
+                {selectedImage.available && (
+                  <span className="badge bg-success">Available for Purchase</span>
+                )}
+              </div>
+              
+              {/* Purchase Options */}
+              {selectedImage.available && (
+                <div className="mt-2">
+                  <h6 className="text-muted mb-2 small">Available Formats:</h6>
+                  <div className="d-flex flex-wrap justify-content-center gap-1">
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Digital Download")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      Digital - $15
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "8x10 Print")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      8x10 Print - $25
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Canvas Print")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      Canvas - $85
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Metal Print")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      Metal - $95
+                    </button>
+                    <button
+                      className="btn btn-outline-secondary btn-sm"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Commercial License")}
+                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                    >
+                      License - $150
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Additional Services Section */}
+      <div className="mt-5 pt-5 border-top">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header">
+                <h5 className="mb-0">Custom Photography Services</h5>
+              </div>
+              <div className="card-body">
+                <h6>Nature & Wildlife Photography</h6>
+                <p className="text-muted small">
+                  Need custom nature photography for your business, publication, or personal collection? 
+                  I offer specialized nature and wildlife photography services.
+                </p>
+                <ul className="list-unstyled small text-muted">
+                  <li>• Corporate nature photography</li>
+                  <li>• Stock photography creation</li>
+                  <li>• Custom landscape commissions</li>
+                  <li>• Wildlife documentation</li>
+                </ul>
+                <Link to="/contact" className="btn btn-outline-primary btn-sm">
+                  Inquire About Custom Work
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header">
+                <h5 className="mb-0">Photography Workshops</h5>
+              </div>
+              <div className="card-body">
+                <h6>Learn Nature Photography</h6>
+                <p className="text-muted small">
+                  Join me for hands-on photography workshops focusing on landscape and wildlife photography techniques.
+                </p>
+                <ul className="list-unstyled small text-muted">
+                  <li>• Houston-area nature locations</li>
+                  <li>• Small group sessions (2-4 people)</li>
+                  <li>• Equipment and technique guidance</li>
+                  <li>• Post-processing tips</li>
+                </ul>
+                <Link to="/contact" className="btn btn-outline-primary btn-sm">
+                  Workshop Information
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Gallery;
