@@ -1,12 +1,16 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import Logo from './Logo'
+import ThemeToggle from './ThemeToggle'
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light sticky-top shadow-lg">
       <div className="container">
         <Link className="navbar-brand fw-bold d-flex align-items-center" to="/" aria-label="Go to home page">
-          <span>Kizirian Photography</span>
+          <Logo size="small" className="me-2" />
+          <span className="d-none d-md-inline">Kizirian Photography</span>
+          <span className="d-inline d-md-none">Kizirian</span>
         </Link>
 
         <button
@@ -78,6 +82,9 @@ function Navbar() {
               >
                 Instagram
               </a>
+            </li>
+            <li className="nav-item">
+              <ThemeToggle />
             </li>
           </ul>
         </div>
