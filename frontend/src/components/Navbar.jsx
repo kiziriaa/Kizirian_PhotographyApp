@@ -5,9 +5,8 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light sticky-top shadow-lg">
       <div className="container">
-        <Link className="navbar-brand fw-bold d-flex align-items-center" to="/">
-          <span className="d-none d-sm-inline">Kizirian Photography</span>
-          <span className="d-inline d-sm-none">Kizirian</span>
+        <Link className="navbar-brand fw-bold d-flex align-items-center" to="/" aria-label="Go to home page">
+          <span>Kizirian Photography</span>
         </Link>
 
         <button
@@ -31,6 +30,7 @@ function Navbar() {
                   `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
                 } 
                 end
+                aria-label="Go to home page"
               >
                 Home
               </NavLink>
@@ -41,6 +41,7 @@ function Navbar() {
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
                 }
+                aria-label="View photography gallery"
               >
                 Gallery
               </NavLink>
@@ -51,6 +52,7 @@ function Navbar() {
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded-pill mx-1 btn-primary text-white ${isActive ? 'active' : ''}`
                 }
+                aria-label="Book a photography session"
               >
                 Book Now
               </NavLink>
@@ -61,6 +63,7 @@ function Navbar() {
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
                 }
+                aria-label="Contact information and form"
               >
                 Contact
               </NavLink>
@@ -71,6 +74,7 @@ function Navbar() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="nav-link px-3 py-2 rounded-pill mx-1"
+                aria-label="Follow us on Instagram (opens in new tab)"
               >
                 Instagram
               </a>

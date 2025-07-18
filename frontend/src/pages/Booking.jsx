@@ -247,6 +247,13 @@ function Booking() {
       return;
     }
 
+    // Check if time is selected
+    if (!formData.time) {
+      setStatus("Please select a preferred time for your session");
+      setSubmitting(false);
+      return;
+    }
+
     const { date, time } = formData;
     const fullDateTime = new Date(`${date}T${time}`);
 
@@ -297,7 +304,10 @@ function Booking() {
 
   return (
     <div className="container py-5">
-      <h1 className="text-center mb-4">Book a Session</h1>
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold">Book a Session</h1>
+        <p className="lead text-muted">Schedule your professional photography session with ease</p>
+      </div>
 
       {/* Early Bird Promotion - Top Banner */}
       <div className="alert alert-warning text-center mb-4">
@@ -346,8 +356,16 @@ function Booking() {
                 className="btn btn-outline-primary" 
                 onClick={sendVerificationCode}
                 disabled={sendingCode || !formData.email}
+                aria-label={sendingCode ? "Sending verification code" : "Send verification code"}
               >
-                {sendingCode ? "Sending..." : "Verify"}
+                {sendingCode ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Sending...
+                  </>
+                ) : (
+                  "Verify"
+                )}
               </button>
             )}
             {emailVerified && (
@@ -384,8 +402,16 @@ function Booking() {
                 className="btn btn-primary" 
                 onClick={confirmVerification}
                 disabled={sendingCode || verificationCode.length !== 6}
+                aria-label={sendingCode ? "Verifying email code" : "Confirm email verification"}
               >
-                {sendingCode ? "Verifying..." : "Confirm"}
+                {sendingCode ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                    Verifying...
+                  </>
+                ) : (
+                  "Confirm"
+                )}
               </button>
             </div>
             <div className="form-text">
@@ -448,7 +474,7 @@ function Booking() {
             id="discountCode" 
             value={sessionPricing.discountCode}
             onChange={handleDiscountCodeChange}
-            placeholder="Optional: Enter SEMEISTVO or PRIATELI"
+            placeholder="Optional: Enter Discount Code if available"
             style={{ textTransform: 'uppercase' }}
           />
           <div className="form-text">
@@ -519,8 +545,20 @@ function Booking() {
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-primary w-100" disabled={submitting}>
-          {submitting ? "Submitting..." : "Submit Booking"}
+        <button 
+          type="submit" 
+          className="btn btn-primary w-100" 
+          disabled={submitting}
+          aria-label={submitting ? "Processing booking submission" : "Submit booking form"}
+        >
+          {submitting ? (
+            <>
+              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Submitting...
+            </>
+          ) : (
+            "Submit Booking"
+          )}
         </button>
 
         {status && (

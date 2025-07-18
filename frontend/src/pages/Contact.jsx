@@ -48,15 +48,18 @@ function Contact() {
 
   return (
     <div className="container py-5">
+      {/* Header Section */}
+      <div className="text-center mb-5">
+        <h1 className="display-4 fw-bold">Get in Touch</h1>
+        <p className="lead text-muted">
+          Have questions about our services, want to discuss your vision, or ready to book? 
+          We'd love to hear from you! Send us a message and we'll respond within 24 hours.
+        </p>
+      </div>
+
       <div className="row">
         {/* Left Column - Contact Form */}
         <div className="col-lg-8">
-          <h1 className="mb-4">Get in Touch</h1>
-          <p className="text-muted mb-4">
-            Have questions about our services, want to discuss your vision, or ready to book? 
-            We'd love to hear from you! Send us a message and we'll respond within 24 hours.
-          </p>
-
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="form-label">Your Name *</label>
@@ -68,7 +71,9 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Enter your full name (e.g., Sarah Johnson)"
                 required
+                aria-describedby="name-help"
               />
+              <div id="name-help" className="form-text">Your full name for personalized communication</div>
             </div>
 
             <div className="mb-3">
@@ -81,7 +86,9 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="your.email@gmail.com"
                 required
+                aria-describedby="email-help"
               />
+              <div id="email-help" className="form-text">We'll respond to this email address within 24 hours</div>
             </div>
 
             <div className="mb-3">
@@ -94,15 +101,25 @@ function Contact() {
                 onChange={handleChange}
                 placeholder="Hi Alex! I'm interested in booking a family portrait session. I'd prefer outdoor shots in a park setting, and I'm flexible with dates in the next month. Do you have any availability?"
                 required
+                aria-describedby="message-help"
               />
+              <div id="message-help" className="form-text">Tell us about your vision, preferences, and any specific requirements</div>
             </div>
 
             <button
               type="submit"
               className="btn btn-primary btn-lg"
               disabled={submitting}
+              aria-label={submitting ? "Sending message" : "Send contact message"}
             >
-              {submitting ? "Sending..." : "Send Message"}
+              {submitting ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
             </button>
 
             {status && (

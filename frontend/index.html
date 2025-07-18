@@ -22,6 +22,16 @@
 
     <!-- Warm Professional Theme Styles -->
     <style>
+      /* CSS Variables for better maintainability */
+      :root {
+        --primary-gold: #d4af37;
+        --primary-brown: #8b4513;
+        --dark-brown: #2c1810;
+        --light-text: #f4f1ed;
+        --muted-text: #c9b896;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
       html, body {
         background: linear-gradient(135deg, #2c1810 0%, #4a2c20 50%, #1a1a1a 100%) !important;
         color: #f4f1ed !important;
@@ -708,6 +718,55 @@
         .close-btn {
           top: 10px !important;
           right: 10px !important;
+        }
+      }
+      
+      /* Touch and interaction improvements */
+      .btn, .form-control, .form-select, .card {
+        touch-action: manipulation !important;
+      }
+      
+      /* Loading spinner styles */
+      .spinner-border-sm {
+        width: 1rem !important;
+        height: 1rem !important;
+        border-width: 0.15rem !important;
+      }
+      
+      /* Focus improvements for accessibility */
+      .btn:focus, .form-control:focus, .form-select:focus, .nav-link:focus {
+        outline: 2px solid #d4af37 !important;
+        outline-offset: 2px !important;
+      }
+      
+      /* Improved text selection */
+      .form-control, .form-select {
+        user-select: text !important;
+      }
+      
+      /* Performance improvements */
+      .card, .btn, .modal-content {
+        will-change: transform !important;
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth !important;
+      }
+      
+      /* Image optimization hints */
+      img {
+        image-rendering: -webkit-optimize-contrast !important;
+        image-rendering: optimize-contrast !important;
+      }
+      
+      /* Reduced motion for users who prefer it */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
         }
       }
     </style>

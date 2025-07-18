@@ -262,9 +262,11 @@ Thank you!`;
               <div className="position-relative">
                 <img
                   src={img.src}
-                  alt={img.filename}
+                  alt={`${img.category} photography by Kizirian Photography - ${img.filename}`}
                   className="card-img-top img-fluid rounded"
                   style={{ height: "200px", objectFit: "cover" }}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="watermark">© Kizirian Photography</div>
                 
@@ -275,6 +277,7 @@ Thank you!`;
                       className="btn btn-success btn-sm"
                       onClick={handlePurchaseClick}
                       style={{ fontSize: "0.75rem" }}
+                      aria-label={`Purchase print of ${img.filename}`}
                     >
                       Buy Print
                     </button>
@@ -322,7 +325,13 @@ Thank you!`;
               overflow: "hidden"
             }}
           >
-            <button className="close-btn" onClick={() => setSelectedImage(null)}>×</button>
+            <button 
+              className="close-btn" 
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close image modal"
+            >
+              ×
+            </button>
             <div 
               className="image-container" 
               style={{ 
@@ -336,7 +345,7 @@ Thank you!`;
             >
               <img
                 src={selectedImage.src}
-                alt="enlarged"
+                alt={`Full size view of ${selectedImage.category} photography - ${selectedImage.filename}`}
                 className="modal-img"
                 style={{
                   maxWidth: "100%",
@@ -346,6 +355,8 @@ Thank you!`;
                   objectFit: "contain",
                   borderRadius: "8px"
                 }}
+                loading="eager"
+                decoding="sync"
               />
             </div>
             <div className="text-center" style={{ maxHeight: "25%", overflowY: "auto" }}>
@@ -443,28 +454,6 @@ Thank you!`;
                 </ul>
                 <Link to="/contact" className="btn btn-outline-primary btn-sm">
                   Inquire About Custom Work
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="card">
-              <div className="card-header">
-                <h5 className="mb-0">Photography Workshops</h5>
-              </div>
-              <div className="card-body">
-                <h6>Learn Nature Photography</h6>
-                <p className="text-muted small">
-                  Join me for hands-on photography workshops focusing on landscape and wildlife photography techniques.
-                </p>
-                <ul className="list-unstyled small text-muted">
-                  <li>• Houston-area nature locations</li>
-                  <li>• Small group sessions (2-4 people)</li>
-                  <li>• Equipment and technique guidance</li>
-                  <li>• Post-processing tips</li>
-                </ul>
-                <Link to="/contact" className="btn btn-outline-primary btn-sm">
-                  Workshop Information
                 </Link>
               </div>
             </div>
