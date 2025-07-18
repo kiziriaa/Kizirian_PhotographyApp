@@ -43,7 +43,7 @@ function Booking() {
     
     setCheckingAvailability(true);
     try {
-      const response = await fetch("http://localhost:5005/api/check-availability", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5005'}/api/check-availability`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -183,7 +183,7 @@ function Booking() {
     setStatus("");
 
     try {
-      const response = await fetch("http://localhost:5005/api/verify-email", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5005'}/api/verify-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email }),
@@ -214,7 +214,7 @@ function Booking() {
     setStatus("");
 
     try {
-      const response = await fetch("http://localhost:5005/api/confirm-email-verification", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5005'}/api/confirm-email-verification`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, code: verificationCode }),
@@ -251,7 +251,7 @@ function Booking() {
     const fullDateTime = new Date(`${date}T${time}`);
 
     try {
-      const response = await fetch("http://localhost:5005/api/book", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5005'}/api/book`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, date: fullDateTime.toISOString() }),

@@ -13,8 +13,8 @@
   status = 200
 
 [context.production.environment]
-  VITE_API_URL = "https://your-backend-url.render.com"
+  VITE_API_URL = "https://kizirian-photography-backend.onrender.com"
 [context.deploy-preview.environment]
-  VITE_API_URL = "https://your-backend-url.render.com"
+  VITE_API_URL = "https://kizirian-photography-backend.onrender.com"
 [context.branch-deploy.environment]
-  VITE_API_URL = "https://your-backend-url.render.com"
+  VITE_API_URL = "https://kizirian-photography-backend.onrender.com"
