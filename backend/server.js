@@ -17,7 +17,16 @@ const PORT = process.env.PORT || 5005;
 
 // Middleware
 app.use(helmet());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ 
+  origin: [
+    "http://localhost:5173",
+    "https://netlify.app",
+    "https://*.netlify.app",
+    /https:\/\/.*\.netlify\.app$/,
+    process.env.FRONTEND_URL
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Setup log file stream
