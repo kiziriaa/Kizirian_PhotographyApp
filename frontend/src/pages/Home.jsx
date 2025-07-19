@@ -5,7 +5,7 @@ import portraitImage from "../assets/20230922-1H1A1234.jpg";
 
 function Home() {
   return (
-    <div className="container py-5">
+    <div className="container py-5 home-page">
       {/* Hero Section */}
       <div className="text-center mb-5">
         <h1>Capturing Moments That Matter</h1>
@@ -107,24 +107,24 @@ function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="text-center bg-primary rounded p-5">
-        <h3 className="text-white mb-3">Ready to Capture Your Story?</h3>
-        <p className="text-white mb-4">Book your session today and let's create something amazing together!</p>
+      <div className="text-center cta-section">
+        <h3 className="mb-3">Ready to Capture Your Story?</h3>
+        <p className="mb-4">Book your session today and let's create something amazing together!</p>
         <div className="mb-3">
-          <Link to="/booking" className="btn btn-light btn-lg me-3">
+          <Link to="/booking" className="btn btn-primary btn-lg me-3">
             Book Now
           </Link>
           <a 
             href="https://instagram.com/kizirian_photography" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn btn-outline-light btn-lg"
+            className="btn btn-outline-primary btn-lg"
           >
             📷 Follow on Instagram
           </a>
         </div>
-        <div className="text-white small">
-          Follow <a href="https://instagram.com/kizirian_photography" target="_blank" rel="noopener noreferrer" className="text-white">@kizirian_photography</a> for latest work and behind-the-scenes content!
+        <div className="small">
+          Follow <a href="https://instagram.com/kizirian_photography" target="_blank" rel="noopener noreferrer" className="text-decoration-none">@kizirian_photography</a> for latest work and behind-the-scenes content!
         </div>
       </div>
     </div>

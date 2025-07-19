@@ -59,7 +59,7 @@ function Contact() {
 
       <div className="row">
         {/* Left Column - Contact Form */}
-        <div className="col-lg-8">
+        <div className="col-lg-6">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="form-label">Your Name *</label>
@@ -131,12 +131,14 @@ function Contact() {
         </div>
 
         {/* Right Column - Contact Info & Quick Actions */}
-        <div className="col-lg-4">
-          <div className="card">
-            <div className="card-header">
-              <h5 className="mb-0">📞 Contact Information</h5>
-            </div>
-            <div className="card-body">
+        <div className="col-lg-6">
+          <div className="row">
+            <div className="col-md-6 col-lg-12 mb-4">
+              <div className="card contact-info-card">
+                <div className="card-header">
+                  <h5 className="mb-0">📞 Contact Information</h5>
+                </div>
+                <div className="card-body">
               <div className="mb-3">
                 <h6>📧 Email</h6>
                 <p className="text-muted">kizirianphotography@gmail.com</p>
@@ -172,26 +174,30 @@ function Contact() {
                   View Our Work
                 </Link>
               </div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* FAQ Section */}
-          <div className="card mt-4">
-            <div className="card-header">
-              <h5 className="mb-0">❓ Quick Questions</h5>
-            </div>
-            <div className="card-body">
-              <div className="mb-3">
-                <h6>What's included in a session?</h6>
-                <p className="text-muted small">Professional editing, high-resolution images, and personal consultation.</p>
-              </div>
-              <div className="mb-3">
-                <h6>How long is the turnaround?</h6>
-                <p className="text-muted small">48-72 hours for edited photos.</p>
-              </div>
-              <div className="mb-0">
-                <h6>Do you travel for sessions?</h6>
-                <p className="text-muted small">Yes! We serve the entire Houston metro area.</p>
+            <div className="col-md-6 col-lg-12">
+              {/* FAQ Section */}
+              <div className="card">
+                <div className="card-header">
+                  <h5 className="mb-0">❓ Quick Questions</h5>
+                </div>
+                <div className="card-body">
+                  <div className="mb-3">
+                    <h6>What's included in a session?</h6>
+                    <p className="text-muted small">Professional editing, high-resolution images, and personal consultation.</p>
+                  </div>
+                  <div className="mb-3">
+                    <h6>How long is the turnaround?</h6>
+                    <p className="text-muted small">48-72 hours for edited photos.</p>
+                  </div>
+                  <div className="mb-0">
+                    <h6>Do you travel for sessions?</h6>
+                    <p className="text-muted small">Yes! We serve the entire Houston metro area.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

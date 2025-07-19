@@ -197,7 +197,7 @@ Thank you!`;
               </Link>
             </div>
           ) : (
-            <div className="alert alert-success text-center mb-4">
+            <div className="alert alert-info text-center mb-4">
               <h5 className="mb-2">Fine Art Print Shop</h5>
               <p className="mb-0">Professional landscape and wildlife photography available for purchase.</p>
               <small className="text-muted d-block mt-1">

@@ -9,8 +9,6 @@ function Navbar() {
       <div className="container">
         <Link className="navbar-brand fw-bold d-flex align-items-center" to="/" aria-label="Go to home page">
           <Logo size="small" className="me-2" />
-          <span className="d-none d-sm-inline">Kizirian Photography</span>
-          <span className="d-inline d-sm-none">Kizirian Photography</span>
         </Link>
 
         <button

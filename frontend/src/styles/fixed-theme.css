@@ -108,11 +108,20 @@ html, body {
 [data-theme='light'] body {
   background-image: 
     var(--bg-primary),
-    url('./assets/Landscapes/20240531-1H1A0680.jpg');
+    url('./assets/Landscapes/20230923-1H1A1793.jpg');
   background-size: cover, cover;
   background-position: center, center;
   background-attachment: fixed, fixed;
   background-blend-mode: overlay;
+}
+
+/* Home Page Specific Background */
+[data-theme='light'] .home-page {
+  background-image: url('./assets/Landscapes/20230923-1H1A1793.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 [data-theme='light'] body::before {
@@ -166,7 +175,7 @@ p, .form-text, small {
   color: var(--text-muted) !important;
 }
 
-/* Logo Styles - 4x Bigger */
+/* Logo Styles - 8x Bigger (2x increase from 4x) */
 .logo {
   display: flex;
   align-items: center;
@@ -175,8 +184,8 @@ p, .form-text, small {
 }
 
 .logo-image {
-  width: 120px !important; /* 4x bigger than 30px */
-  height: 120px !important;
+  width: 240px !important; /* 8x bigger than 30px (2x from 120px) */
+  height: 240px !important;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
   transition: transform var(--transition-normal);
@@ -191,8 +200,8 @@ p, .form-text, small {
 }
 
 .logo-small .logo-image {
-  width: 100px !important; /* 4x bigger for small version */
-  height: 100px !important;
+  width: 200px !important; /* 8x bigger for small version (2x from 100px) */
+  height: 200px !important;
 }
 
 /* Navbar - Fixed Colors */
@@ -229,6 +238,21 @@ p, .form-text, small {
   color: var(--text-navbar-hover) !important;
   transform: translateY(-1px);
   box-shadow: var(--shadow-light);
+}
+
+/* Book Now Button - Permanent Border Style */
+.navbar-light .navbar-nav .nav-link.btn-primary {
+  background: transparent !important;
+  border: 2px solid var(--accent-primary) !important;
+  color: var(--accent-primary) !important;
+  font-weight: 600;
+}
+
+.navbar-light .navbar-nav .nav-link.btn-primary:hover,
+.navbar-light .navbar-nav .nav-link.btn-primary.active {
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: var(--text-light) !important;
 }
 
 /* Theme Toggle */
@@ -530,13 +554,13 @@ p, .form-text, small {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .logo-image {
-    width: 80px !important;
-    height: 80px !important;
+    width: 160px !important; /* 2x bigger from 80px */
+    height: 160px !important;
   }
   
   .logo-small .logo-image {
-    width: 60px !important;
-    height: 60px !important;
+    width: 120px !important; /* 2x bigger from 60px */
+    height: 120px !important;
   }
   
   .settings-dropdown {
@@ -566,6 +590,46 @@ p, .form-text, small {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Early Bird Special Card - Dark Mode Text Fix */
+[data-theme='dark'] .alert-warning {
+  color: #1a1a1a !important;
+}
+
+[data-theme='dark'] .alert-warning h4,
+[data-theme='dark'] .alert-warning p,
+[data-theme='dark'] .alert-warning .badge {
+  color: #1a1a1a !important;
+}
+
+/* Contact Page Layout Improvements */
+.contact-info-card {
+  min-width: 320px;
+}
+
+.contact-info-card .text-muted {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ready to Capture Section Styling */
+.cta-section {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--border-radius-large) !important;
+  box-shadow: var(--shadow-medium);
+  color: var(--text-primary) !important;
+  padding: var(--spacing-xxl) !important;
+}
+
+.cta-section h3 {
+  color: var(--text-primary) !important;
+}
+
+.cta-section p {
+  color: var(--text-secondary) !important;
 }
 
 /* Print Styles */
