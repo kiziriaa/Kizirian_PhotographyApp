@@ -240,19 +240,19 @@ p, .form-text, small {
   box-shadow: var(--shadow-light);
 }
 
-/* Book Now Button - Permanent Border Style */
-.navbar-light .navbar-nav .nav-link.btn-primary {
-  background: transparent !important;
+/* Book Now Button - Override inline styles */
+.navbar-light .navbar-nav .nav-link.bg-white {
+  background: var(--bg-card) !important;
   border: 2px solid var(--accent-primary) !important;
   color: var(--accent-primary) !important;
   font-weight: 600;
 }
 
-.navbar-light .navbar-nav .nav-link.btn-primary:hover,
-.navbar-light .navbar-nav .nav-link.btn-primary.active {
+.navbar-light .navbar-nav .nav-link.bg-primary {
   background: var(--accent-primary) !important;
-  border-color: var(--accent-primary) !important;
+  border: 2px solid var(--accent-primary) !important;
   color: var(--text-light) !important;
+  font-weight: 600;
 }
 
 /* Theme Toggle */
@@ -563,15 +563,76 @@ p, .form-text, small {
     height: 120px !important;
   }
   
+  /* Navbar Mobile Layout */
+  .navbar-brand {
+    justify-content: center !important;
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .navbar-nav {
+    text-align: center;
+    margin-top: var(--spacing-md);
+  }
+  
+  .navbar-nav .nav-item {
+    margin: var(--spacing-xs) auto;
+  }
+  
   .settings-dropdown {
     right: -100px;
     min-width: 300px;
   }
   
+  /* Gallery Filter Buttons - Remove Horizontal Scroll */
   .filter-buttons {
-    justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+    overflow: visible !important;
+    padding: 0;
+  }
+  
+  .filter-btn {
+    font-size: 0.8rem !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+  }
+  
+  /* CTA Section Button Spacing */
+  .cta-section .btn {
+    margin: var(--spacing-xs) !important;
+    display: inline-block;
+  }
+  
+  .cta-section .btn-lg {
+    margin-bottom: var(--spacing-sm) !important;
+  }
+  
+  /* Mobile Gallery Modal - Show Purchase Options */
+  .mobile-purchase-options {
+    display: block !important;
+    margin-top: var(--spacing-md);
+  }
+  
+  .mobile-purchase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+  }
+  
+  .mobile-purchase-btn {
+    font-size: 0.7rem !important;
+    padding: var(--spacing-xs) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .gallery-modal-content {

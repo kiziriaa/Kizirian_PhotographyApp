@@ -366,9 +366,9 @@ Thank you!`;
                 )}
               </div>
               
-              {/* Purchase Options */}
+              {/* Purchase Options - Desktop View */}
               {selectedImage.available && (
-                <div className="mt-2">
+                <div className="mt-2 d-none d-md-block">
                   <h6 className="text-muted mb-2 small">Available Formats:</h6>
                   <div className="d-flex flex-wrap justify-content-center gap-1">
                     <button
@@ -419,6 +419,51 @@ Thank you!`;
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       License - $150
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Purchase Options - Mobile View */}
+              {selectedImage.available && (
+                <div className="mobile-purchase-options d-md-none">
+                  <h6 className="text-muted mb-2 small">Available Formats:</h6>
+                  <div className="mobile-purchase-grid">
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=digital&price=15`}
+                    >
+                      Digital - $15
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=8x10&price=33`}
+                    >
+                      8x10 - $33
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=11x14&price=45`}
+                    >
+                      11x14 - $45
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=16x20&price=70`}
+                    >
+                      16x20 - $70
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=canvas&price=105`}
+                    >
+                      Canvas - $105
+                    </button>
+                    <button
+                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=metal&price=120`}
+                    >
+                      Metal - $120
                     </button>
                   </div>
                 </div>
