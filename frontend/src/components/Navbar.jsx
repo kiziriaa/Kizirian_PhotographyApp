@@ -51,14 +51,20 @@ function Navbar() {
             <li className="nav-item">
               <NavLink 
                 to="/booking" 
-                className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded-pill mx-1 btn-primary text-white ${isActive ? 'active' : ''}`
+                className={({ isActive }) =>
+                  `nav-link px-3 py-2 rounded-pill mx-1 fw-bold ${
+                    isActive
+                      ? 'bg-primary text-white border border-primary'
+                      : 'bg-white border border-primary text-primary'
+                  }`
                 }
                 aria-label="Book a photography session"
+                style={{ whiteSpace: 'nowrap' }} // force one line
               >
                 Book Now
               </NavLink>
             </li>
+
             <li className="nav-item">
               <NavLink 
                 to="/contact" 

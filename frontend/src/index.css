@@ -57,3 +57,14 @@ button:hover {
   color: var(--accent) !important;
   font-weight: 700;
 }
+
+.text-primary {
+  color: #0d6efd !important; /* Bootstrap primary blue */
+}
+.bg-white {
+  background-color: #ffffff !important;
+}
+.border-primary {
+  border-color: #2c3e50 !important;
+}
+
