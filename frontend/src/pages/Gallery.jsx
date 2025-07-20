@@ -413,7 +413,7 @@ Thank you!`;
                   <span>Views: {viewCounts[img.src] || 0}</span>
                   {img.available && (
                     <span className="text-success">
-                      <small>From $15</small>
+                      <small>Contact for pricing</small>
                     </span>
                   )}
                 </div>
@@ -510,57 +510,20 @@ Thank you!`;
               {/* Purchase Options - Desktop View */}
               {selectedImage.available && (
                 <div className="mt-2 d-none d-md-block">
-                  <h6 className="text-muted mb-2 small">Available Formats:</h6>
-                  <div className="d-flex flex-wrap justify-content-center gap-1">
+                  <h6 className="text-muted mb-2 small">Available for Purchase:</h6>
+                  <div className="d-flex justify-content-center">
                     <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=digital&price=15`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
+                      className="btn btn-primary btn-lg"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Print Inquiry")}
+                      style={{ fontSize: "1rem", padding: "0.5rem 1.5rem" }}
                     >
-                      Digital - $15
+                      Contact for Pricing
                     </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=8x10&price=33`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      8x10 - $33 (inc. shipping)
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=11x14&price=45`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      11x14 - $45 (inc. shipping)
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=16x20&price=70`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      16x20 - $70 (inc. shipping)
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=canvas&price=105`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      Canvas - $105 (inc. shipping)
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=metal&price=120`}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      Metal - $120 (inc. shipping)
-                    </button>
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Commercial License")}
-                      style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
-                    >
-                      License - $150
-                    </button>
+                  </div>
+                  <div className="mt-2 text-center">
+                    <small className="text-muted">
+                      Available formats: Digital downloads, prints, canvas, metal prints, and commercial licensing
+                    </small>
                   </div>
                 </div>
               )}
@@ -568,44 +531,18 @@ Thank you!`;
               {/* Purchase Options - Mobile View */}
               {selectedImage.available && (
                 <div className="mobile-purchase-options d-md-none">
-                  <h6 className="text-muted mb-2 small">Available Formats:</h6>
-                  <div className="mobile-purchase-grid">
+                  <h6 className="text-muted mb-2 small">Available for Purchase:</h6>
+                  <div className="text-center">
                     <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=digital&price=15`}
+                      className="btn btn-primary w-100 mb-2"
+                      onClick={() => sendPurchaseInquiry(selectedImage, "Print Inquiry")}
+                      style={{ fontSize: "0.9rem", padding: "0.5rem" }}
                     >
-                      Digital - $15
+                      Contact for Pricing
                     </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=8x10&price=33`}
-                    >
-                      8x10 - $33
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=11x14&price=45`}
-                    >
-                      11x14 - $45
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=16x20&price=70`}
-                    >
-                      16x20 - $70
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=canvas&price=105`}
-                    >
-                      Canvas - $105
-                    </button>
-                    <button
-                      className="btn btn-outline-primary btn-sm mobile-purchase-btn"
-                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=metal&price=120`}
-                    >
-                      Metal - $120
-                    </button>
+                    <small className="text-muted d-block">
+                      Available formats: Digital downloads, prints, canvas, metal prints, and commercial licensing
+                    </small>
                   </div>
                 </div>
               )}
