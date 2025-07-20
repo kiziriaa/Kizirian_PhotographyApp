@@ -153,7 +153,7 @@ Thank you!`;
   };
 
   return (
-    <div className="container py-5">
+    <div className="container py-5 gallery-page">
       {/* Hero Section */}
       <div className="text-center mb-5">
         <h1>Photography Gallery</h1>

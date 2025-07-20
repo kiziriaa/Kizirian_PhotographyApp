@@ -115,9 +115,50 @@ html, body {
   background-blend-mode: overlay;
 }
 
-/* Home Page Specific Background */
+/* Page Specific Backgrounds */
 [data-theme='light'] .home-page {
-  background-image: url('./assets/Landscapes/20230923-1H1A1793.jpg');
+  background-image: url('./assets/background home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+[data-theme='light'] .booking-page {
+  background-image: url('./assets/background bookings.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+[data-theme='light'] .gallery-page {
+  background-image: url('./assets/background gallery.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Dark Theme Page Backgrounds */
+[data-theme='dark'] .home-page {
+  background-image: url('./assets/background home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+[data-theme='dark'] .booking-page {
+  background-image: url('./assets/background bookings.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+[data-theme='dark'] .gallery-page {
+  background-image: url('./assets/background gallery.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
