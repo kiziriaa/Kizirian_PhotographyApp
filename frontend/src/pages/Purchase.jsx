@@ -3,6 +3,13 @@ import { useSearchParams, Link } from 'react-router-dom';
 import "../App.css";
 
 function Purchase() {
+  useEffect(() => {
+    document.body.className = 'purchase-page';
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
+
   const [searchParams] = useSearchParams();
   const [orderDetails, setOrderDetails] = useState({
     item: '',

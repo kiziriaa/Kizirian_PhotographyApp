@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 
 function Booking() {
+  useEffect(() => {
+    document.body.className = 'booking-page';
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -302,7 +308,7 @@ function Booking() {
     : "";
 
   return (
-    <div className="container py-5 booking-page">
+    <div className="container py-5">
       <div className="text-center mb-5">
         <h1>Book a Session</h1>
         <p className="lead">Schedule your professional photography session with ease</p>

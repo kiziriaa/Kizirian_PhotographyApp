@@ -67,6 +67,13 @@ function Gallery() {
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
 
   useEffect(() => {
+    document.body.className = 'gallery-page';
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
+
+  useEffect(() => {
     const preloadAndDetect = async () => {
       const map = {};
       for (const img of images) {
@@ -224,7 +231,7 @@ Thank you!`;
   };
 
   return (
-    <div className="container py-5 gallery-page">
+    <div className="container py-5">
       {/* Hero Section */}
       <div className="text-center mb-5">
         <h1>Photography Gallery</h1>

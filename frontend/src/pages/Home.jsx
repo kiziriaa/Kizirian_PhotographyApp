@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
 import portraitImage from "../assets/20230922-1H1A1234.jpg";
 
 function Home() {
+  useEffect(() => {
+    document.body.className = 'home-page';
+    return () => {
+      document.body.className = '';
+    };
+  }, []);
+
   return (
-    <div className="container py-5 home-page">
+    <div className="container py-5">
       {/* Hero Section */}
       <div className="text-center mb-5">
         <h1>Capturing Moments That Matter</h1>
