@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import Logo from './Logo'
-import ThemeToggle from './ThemeToggle'
 
 function Navbar() {
   return (
@@ -86,9 +85,6 @@ function Navbar() {
               >
                 Instagram
               </a>
-            </li>
-            <li className="nav-item">
-              <ThemeToggle />
             </li>
           </ul>
         </div>
