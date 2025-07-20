@@ -87,6 +87,53 @@ function Gallery() {
     preloadAndDetect();
   }, []);
 
+  // Keyboard navigation for modal
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (!selectedImage) return;
+
+      const filtered = getFilteredImages();
+      const currentIndex = filtered.findIndex(img => img.src === selectedImage.src);
+
+      if (event.key === 'ArrowLeft') {
+        // Navigate to previous image
+        const prevIndex = currentIndex > 0 ? currentIndex - 1 : filtered.length - 1;
+        const prevImage = filtered[prevIndex];
+        if (prevImage) {
+          setSelectedImage(prevImage);
+          setViewCounts((prev) => ({
+            ...prev,
+            [prevImage.src]: (prev[prevImage.src] || 0) + 1,
+          }));
+          setSelectedOrientation(orientationMap[prevImage.src] || "landscape");
+        }
+      } else if (event.key === 'ArrowRight') {
+        // Navigate to next image
+        const nextIndex = currentIndex < filtered.length - 1 ? currentIndex + 1 : 0;
+        const nextImage = filtered[nextIndex];
+        if (nextImage) {
+          setSelectedImage(nextImage);
+          setViewCounts((prev) => ({
+            ...prev,
+            [nextImage.src]: (prev[nextImage.src] || 0) + 1,
+          }));
+          setSelectedOrientation(orientationMap[nextImage.src] || "landscape");
+        }
+      } else if (event.key === 'Escape') {
+        // Close modal
+        setSelectedImage(null);
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleKeyPress);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [selectedImage, orientationMap]);
+
   // Filter images based on main category and sub-category
   const getFilteredImages = () => {
     if (activeMainCategory === "Portfolio") {
@@ -128,6 +175,30 @@ function Gallery() {
       [img.src]: (prev[img.src] || 0) + 1,
     }));
     setSelectedOrientation(orientationMap[img.src] || "landscape");
+  };
+
+  const navigateImage = (direction) => {
+    if (!selectedImage) return;
+
+    const filtered = getFilteredImages();
+    const currentIndex = filtered.findIndex(img => img.src === selectedImage.src);
+
+    let newIndex;
+    if (direction === 'prev') {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : filtered.length - 1;
+    } else {
+      newIndex = currentIndex < filtered.length - 1 ? currentIndex + 1 : 0;
+    }
+
+    const newImage = filtered[newIndex];
+    if (newImage) {
+      setSelectedImage(newImage);
+      setViewCounts((prev) => ({
+        ...prev,
+        [newImage.src]: (prev[newImage.src] || 0) + 1,
+      }));
+      setSelectedOrientation(orientationMap[newImage.src] || "landscape");
+    }
   };
 
   const handlePurchaseClick = (e) => {
@@ -318,6 +389,22 @@ Thank you!`;
             >
               ×
             </button>
+
+            {/* Navigation Arrows */}
+            <button 
+              className="nav-btn nav-btn-prev" 
+              onClick={() => navigateImage('prev')}
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+            <button 
+              className="nav-btn nav-btn-next" 
+              onClick={() => navigateImage('next')}
+              aria-label="Next image"
+            >
+              ›
+            </button>
             <div 
               className="image-container" 
               style={{ 
@@ -348,6 +435,9 @@ Thank you!`;
             <div className="text-center" style={{ maxHeight: "25%", overflowY: "auto" }}>
               <div className="text-muted small mb-2">
                 {selectedImage.filename.replace(/\.[^/.]+$/, "")}
+              </div>
+              <div className="text-muted small mb-3 d-none d-md-block">
+                Use ← → arrow keys or click arrows to navigate • Press Esc to close
               </div>
               <div className="d-flex justify-content-center gap-2 mb-2">
                 <span className="badge bg-primary">{selectedImage.category}</span>
