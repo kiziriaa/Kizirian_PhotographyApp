@@ -460,42 +460,42 @@ Thank you!`;
                   <div className="d-flex flex-wrap justify-content-center gap-1">
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Digital Download")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=digital&price=15`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       Digital - $15
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "8x10 Print")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=8x10&price=33`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       8x10 - $33 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "11x14 Print")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=11x14&price=45`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       11x14 - $45 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "16x20 Print")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=16x20&price=70`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       16x20 - $70 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Canvas Print")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=canvas&price=105`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       Canvas - $105 (inc. shipping)
                     </button>
                     <button
                       className="btn btn-outline-primary btn-sm"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Metal Print")}
+                      onClick={() => window.location.href = `/purchase?item=${encodeURIComponent(selectedImage.filename)}&type=metal&price=120`}
                       style={{ fontSize: "0.8rem", padding: "0.25rem 0.5rem" }}
                     >
                       Metal - $120 (inc. shipping)

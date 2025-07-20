@@ -181,7 +181,6 @@ p, .form-text, small {
   background: var(--bg-white) !important;
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-medium);
-  backdrop-filter: var(--backdrop-blur);
   padding: var(--spacing-md) 0;
 }
 
