@@ -29,7 +29,7 @@ function Navbar() {
               <NavLink 
                 to="/" 
                 className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
                 } 
                 end
                 aria-label="Go to home page"
@@ -41,7 +41,7 @@ function Navbar() {
               <NavLink 
                 to="/gallery" 
                 className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
                 }
                 aria-label="View photography gallery"
               >
@@ -52,7 +52,7 @@ function Navbar() {
               <NavLink 
                 to="/booking" 
                 className={({ isActive }) =>
-                  `nav-link px-3 py-2 rounded-pill mx-1 fw-bold ${
+                  `nav-link px-3 py-2 rounded mx-1 fw-bold ${
                     isActive
                       ? 'bg-primary text-white border border-primary'
                       : 'bg-white border border-primary text-primary'
@@ -69,7 +69,7 @@ function Navbar() {
               <NavLink 
                 to="/contact" 
                 className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded-pill mx-1 ${isActive ? 'active' : ''}`
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
                 }
                 aria-label="Contact information and form"
               >
@@ -81,7 +81,7 @@ function Navbar() {
                 href="https://instagram.com/kizirian_photography" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="nav-link px-3 py-2 rounded-pill mx-1"
+                className="nav-link px-3 py-2 rounded mx-1"
                 aria-label="Follow us on Instagram (opens in new tab)"
               >
                 Instagram
