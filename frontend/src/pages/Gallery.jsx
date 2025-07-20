@@ -9,8 +9,13 @@ const wildlifeImports = import.meta.glob("../assets/Wildlife/*.{jpg,jpeg,png}", 
 const headshotsImports = import.meta.glob("../assets/Headshots/*.{jpg,jpeg,png}", { eager: true });
 const familyImports = import.meta.glob("../assets/Family/*.{jpg,jpeg,png}", { eager: true });
 const bandsImports = import.meta.glob("../assets/Bands/*.{jpg,jpeg,png}", { eager: true });
-const realEstateImports = import.meta.glob("../assets/RealEstate/*.{jpg,jpeg,png}", { eager: true });
 const petsImports = import.meta.glob("../assets/Pets/*.{jpg,jpeg,png}", { eager: true });
+const babyPhotosImports = import.meta.glob("../assets/Baby Photos/*.{jpg,jpeg,png}", { eager: true });
+const couplesImports = import.meta.glob("../assets/Couples/*.{jpg,jpeg,png}", { eager: true });
+const engagementsImports = import.meta.glob("../assets/Engagements/*.{jpg,jpeg,png}", { eager: true });
+const holidayPhotosImports = import.meta.glob("../assets/Holiday Photos/*.{jpg,jpeg,png}", { eager: true });
+const seniorPhotosImports = import.meta.glob("../assets/Senior Photos/*.{jpg,jpeg,png}", { eager: true });
+const realEstateImports = import.meta.glob("../assets/RealEstate/*.{jpg,jpeg,png}", { eager: true });
 
 // Convert imports into structured image objects with pricing info
 const toImageObjects = (importObj, category) =>
@@ -36,10 +41,15 @@ const images = [
   ...toImageObjects(peopleImports, "People"),
   ...toImageObjects(wildlifeImports, "Wildlife"),
   ...toImageObjects(headshotsImports, "Professional Headshots"),
-  ...toImageObjects(familyImports, "Family Photos"),
-  ...toImageObjects(bandsImports, "Band Photos"),
-  ...toImageObjects(realEstateImports, "Real Estate Photos"),
+  ...toImageObjects(familyImports, "Family"),
+  ...toImageObjects(bandsImports, "Bands"),
   ...toImageObjects(petsImports, "Pet Photos"),
+  ...toImageObjects(babyPhotosImports, "Baby Photos"),
+  ...toImageObjects(couplesImports, "Couples"),
+  ...toImageObjects(engagementsImports, "Engagements"),
+  ...toImageObjects(holidayPhotosImports, "Holiday Photos"),
+  ...toImageObjects(seniorPhotosImports, "Senior Photos"),
+  ...toImageObjects(realEstateImports, "Real Estate Photos"),
 ];
 
 const mainCategories = [
@@ -51,10 +61,15 @@ const portfolioCategories = [
   { name: "All Portfolio", description: "All professional portrait work" },
   { name: "People", description: "Portrait sessions" },
   { name: "Professional Headshots", description: "Corporate and personal headshots" },
-  { name: "Family Photos", description: "Family portrait sessions" },
-  { name: "Band Photos", description: "Music and band photography" },
-  { name: "Real Estate Photos", description: "Property and architectural photography" },
-  { name: "Pet Photos", description: "Pet and animal photography" }
+  { name: "Family", description: "Family portrait sessions" },
+  { name: "Bands", description: "Music and band photography" },
+  { name: "Baby Photos", description: "Newborn and baby photography" },
+  { name: "Couples", description: "Couple portrait sessions" },
+  { name: "Engagements", description: "Engagement photography" },
+  { name: "Holiday Photos", description: "Holiday and seasonal photography" },
+  { name: "Senior Photos", description: "Senior portrait sessions" },
+  { name: "Pet Photos", description: "Pet and animal photography" },
+  { name: "Real Estate Photos", description: "Property and architectural photography" }
 ];
 
 const printCategories = [
@@ -100,10 +115,15 @@ function Gallery() {
         return images.filter(img => 
           img.category === "People" || 
           img.category === "Professional Headshots" || 
-          img.category === "Family Photos" || 
-          img.category === "Band Photos" || 
-          img.category === "Real Estate Photos" || 
-          img.category === "Pet Photos"
+          img.category === "Family" || 
+          img.category === "Bands" || 
+          img.category === "Baby Photos" ||
+          img.category === "Couples" ||
+          img.category === "Engagements" ||
+          img.category === "Holiday Photos" ||
+          img.category === "Senior Photos" ||
+          img.category === "Pet Photos" ||
+          img.category === "Real Estate Photos"
         );
       } else {
         return images.filter(img => img.category === activeSubCategory);
@@ -226,10 +246,15 @@ Thank you!`;
                     (cat.name === "All Portfolio" ? images.filter(img => 
                       img.category === "People" || 
                       img.category === "Professional Headshots" || 
-                      img.category === "Family Photos" || 
-                      img.category === "Band Photos" || 
-                      img.category === "Real Estate Photos" || 
-                      img.category === "Pet Photos"
+                      img.category === "Family" || 
+                      img.category === "Bands" || 
+                      img.category === "Baby Photos" ||
+                      img.category === "Couples" ||
+                      img.category === "Engagements" ||
+                      img.category === "Holiday Photos" ||
+                      img.category === "Senior Photos" ||
+                      img.category === "Pet Photos" ||
+                      img.category === "Real Estate Photos"
                     ).length :
                      images.filter(img => img.category === cat.name).length) :
                     (cat.name === "All Prints" ? images.filter(img => img.category === "Landscapes" || img.category === "Wildlife").length :

@@ -104,16 +104,15 @@ function Booking() {
     
     // Session-based pricing
     const sessionRates = {
+      "Baby Photos": 175,
+      "Bands": 175,
+      "Couples": 200,
+      "Engagements": 200,
+      "Family": 150,
       "Professional Headshots": 150,
-      "Family Photos - Baby Photos": 175,
-      "Family Photos - Holiday Photos": 150,
-      "Family Photos - Engagement": 200,
-      "Family Photos - Graduation": 125,
-      "Family Photos - Senior Photos": 175,
-      "Family Photos - Maternity Photos": 175,
-      "Band Photos": 175,
-      "Real Estate Photos": 100,
-      "Pet Photos": 125
+      "Holiday Photos": 150,
+      "Pet Photos": 125,
+      "Senior Photos": 175
     };
     
     baseRate = sessionRates[sessionType] || 125;
@@ -442,17 +441,16 @@ function Booking() {
         <div className="mb-3">
           <label htmlFor="sessionType" className="form-label">Session Type<span className="text-danger">*</span></label>
           <select className="form-select border" id="sessionType" name="sessionType" value={formData.sessionType} onChange={handleChange} required>
-            <option value="">Choose your session type (e.g., Family Photos - Engagement)</option>
+            <option value="">Choose your session type (e.g., Couples, Engagements)</option>
+            <option value="Baby Photos">Baby Photos</option>
+            <option value="Bands">Bands</option>
+            <option value="Couples">Couples</option>
+            <option value="Engagements">Engagements</option>
+            <option value="Family">Family</option>
             <option value="Professional Headshots">Professional Headshots</option>
-            <option value="Family Photos - Baby Photos">Family Photos - Baby Photos</option>
-            <option value="Family Photos - Holiday Photos">Family Photos - Holiday Photos</option>
-            <option value="Family Photos - Engagement">Family Photos - Engagement</option>
-            <option value="Family Photos - Graduation">Family Photos - Graduation</option>
-            <option value="Family Photos - Senior Photos">Family Photos - Senior Photos</option>
-            <option value="Family Photos - Maternity Photos">Family Photos - Maternity Photos</option>
-            <option value="Band Photos">Band Photos</option>
-            <option value="Real Estate Photos">Real Estate Photos</option>
+            <option value="Holiday Photos">Holiday Photos</option>
             <option value="Pet Photos">Pet Photos</option>
+            <option value="Senior Photos">Senior Photos</option>
           </select>
         </div>
 
