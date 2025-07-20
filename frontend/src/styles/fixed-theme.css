@@ -54,43 +54,48 @@ html, body {
 
 /* Page Specific Backgrounds - Applied to Body */
 body.home-page {
-  background-image: url('../assets/background home.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('../assets/background home.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
 }
 
 body.booking-page {
-  background-image: url('../assets/background bookings.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('../assets/background bookings.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
 }
 
 body.gallery-page {
-  background-image: url('../assets/background gallery.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('../assets/background gallery.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
 }
 
 body.contact-page {
-  background-image: url('../assets/background home.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('../assets/background home.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
 }
 
 body.purchase-page {
-  background-image: url('../assets/background home.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-image: url('../assets/background home.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
 }
 
 /* Add subtle overlay to improve text readability */

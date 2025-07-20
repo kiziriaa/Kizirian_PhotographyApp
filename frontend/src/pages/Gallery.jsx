@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Dynamically import all images from these folders
 const landscapeImports = import.meta.glob("../assets/Landscapes/*.{jpg,jpeg,png}", { eager: true });
@@ -57,6 +57,7 @@ const printCategories = [
 ];
 
 function Gallery() {
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedOrientation, setSelectedOrientation] = useState("landscape");
   const [activeMainCategory, setActiveMainCategory] = useState("Portfolio");
@@ -265,6 +266,10 @@ function Gallery() {
   const handlePurchaseClick = (e) => {
     e.stopPropagation();
     setShowPurchaseModal(true);
+  };
+
+  const handleContactForPricing = (img) => {
+    navigate(`/contact?photo=${encodeURIComponent(img.filename)}`);
   };
 
   const sendPurchaseInquiry = (img, productType) => {
@@ -514,7 +519,7 @@ Thank you!`;
                   <div className="d-flex justify-content-center">
                     <button
                       className="btn btn-primary btn-lg"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Print Inquiry")}
+                      onClick={() => handleContactForPricing(selectedImage)}
                       style={{ fontSize: "1rem", padding: "0.5rem 1.5rem" }}
                     >
                       Contact for Pricing
@@ -535,7 +540,7 @@ Thank you!`;
                   <div className="text-center">
                     <button
                       className="btn btn-primary w-100 mb-2"
-                      onClick={() => sendPurchaseInquiry(selectedImage, "Print Inquiry")}
+                      onClick={() => handleContactForPricing(selectedImage)}
                       style={{ fontSize: "0.9rem", padding: "0.5rem" }}
                     >
                       Contact for Pricing

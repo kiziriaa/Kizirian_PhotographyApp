@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Contact() {
+  const [searchParams] = useSearchParams();
+  
   useEffect(() => {
     document.body.className = 'contact-page';
     return () => {
@@ -14,6 +16,18 @@ function Contact() {
     email: "",
     message: "",
   });
+
+  // Pre-fill message if coming from gallery
+  useEffect(() => {
+    const photo = searchParams.get('photo');
+    if (photo) {
+      const photoName = photo.replace(/\.[^/.]+$/, ""); // Remove file extension
+      setFormData(prev => ({
+        ...prev,
+        message: `Hi Alex,\n\nI'm interested in purchasing prints of "${photoName}". Could you please provide pricing information for the available formats?\n\nThank you!`
+      }));
+    }
+  }, [searchParams]);
 
   const [status, setStatus] = useState("");
   const [submitting, setSubmitting] = useState(false);
