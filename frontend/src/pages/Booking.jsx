@@ -107,17 +107,17 @@ function Booking() {
   const calculatePricing = (sessionType, discountCode) => {
     let baseRate = 125;
     
-    // Session-based pricing
+    // Session-based pricing based on market research
     const sessionRates = {
-      "Baby Photos": 175,
-      "Bands": 175,
-      "Couples": 200,
-      "Engagements": 200,
-      "Family": 150,
-      "Professional Headshots": 150,
-      "Holiday Photos": 150,
-      "Pet Photos": 125,
-      "Senior Photos": 175
+      "Baby Photos": 150,        // $100-200 per session
+      "Bands": 150,              // $100-200 per hour  
+      "Couples": 190,            // $125-250 per session
+      "Engagements": 190,        // $125-250 per session
+      "Family": 225,             // $150-300 per session
+      "Professional Headshots": 115,  // $75-150 per session
+      "Holiday Photos": 90,      // $50-125 per 30min mini
+      "Pet Photos": 150,         // $100-200 per session
+      "Senior Photos": 115       // $75-150 per session
     };
     
     baseRate = sessionRates[sessionType] || 125;

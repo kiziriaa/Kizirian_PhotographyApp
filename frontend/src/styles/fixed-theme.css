@@ -98,7 +98,7 @@ body.purchase-page {
   background-color: transparent !important;
 }
 
-/* Add stronger overlay to improve text readability */
+/* Add subtle overlay to improve text readability */
 body.home-page::before,
 body.booking-page::before,
 body.gallery-page::before,
@@ -110,7 +110,7 @@ body.purchase-page::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.3);
   z-index: -1;
   pointer-events: none;
 }

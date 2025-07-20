@@ -45,7 +45,7 @@ function Home() {
             <div className="card-body text-center">
               <h4 className="card-title">📸 Professional Headshots</h4>
               <p className="card-text">Perfect for LinkedIn, corporate websites, and personal branding</p>
-              <div className="h5 text-success">Starting at $150/hour</div>
+              <div className="h5 text-success">$75 - $150/session</div>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ function Home() {
             <div className="card-body text-center">
               <h4 className="card-title">👨‍👩‍👧‍👦 Family Portraits</h4>
               <p className="card-text">Capture precious moments with your loved ones</p>
-              <div className="h5 text-success">Starting at $125/hour</div>
+              <div className="h5 text-success">$150 - $300/session</div>
             </div>
           </div>
         </div>
@@ -62,8 +62,8 @@ function Home() {
           <div className="card h-100">
             <div className="card-body text-center">
               <h4 className="card-title">💍 Special Events</h4>
-              <p className="card-text">Engagements, graduations, maternity, and more</p>
-              <div className="h5 text-success">Starting at $175/hour</div>
+              <p className="card-text">Engagements, couples, baby photos, and more</p>
+              <div className="h5 text-success">$100 - $250/session</div>
             </div>
           </div>
         </div>
