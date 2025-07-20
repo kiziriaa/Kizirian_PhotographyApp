@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
 
 // Dynamically import all images from these folders
 const landscapeImports = import.meta.glob("../assets/Landscapes/*.{jpg,jpeg,png}", { eager: true });
@@ -94,7 +93,7 @@ function Gallery() {
     preloadAndDetect();
   }, []);
 
-  // Keyboard navigation for modal
+  // Keyboard and touch navigation for modal
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (!selectedImage) return;
@@ -132,12 +131,67 @@ function Gallery() {
       }
     };
 
+    // Touch/swipe navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    };
+
+    const handleSwipe = () => {
+      if (!selectedImage) return;
+      
+      const swipeThreshold = 50; // minimum distance for swipe
+      const swipeDistance = touchStartX - touchEndX;
+
+      if (Math.abs(swipeDistance) > swipeThreshold) {
+        const filtered = getFilteredImages();
+        const currentIndex = filtered.findIndex(img => img.src === selectedImage.src);
+
+        if (swipeDistance > 0) {
+          // Swiped left - go to next image
+          const nextIndex = currentIndex < filtered.length - 1 ? currentIndex + 1 : 0;
+          const nextImage = filtered[nextIndex];
+          if (nextImage) {
+            setSelectedImage(nextImage);
+            setViewCounts((prev) => ({
+              ...prev,
+              [nextImage.src]: (prev[nextImage.src] || 0) + 1,
+            }));
+            setSelectedOrientation(orientationMap[nextImage.src] || "landscape");
+          }
+        } else {
+          // Swiped right - go to previous image
+          const prevIndex = currentIndex > 0 ? currentIndex - 1 : filtered.length - 1;
+          const prevImage = filtered[prevIndex];
+          if (prevImage) {
+            setSelectedImage(prevImage);
+            setViewCounts((prev) => ({
+              ...prev,
+              [prevImage.src]: (prev[prevImage.src] || 0) + 1,
+            }));
+            setSelectedOrientation(orientationMap[prevImage.src] || "landscape");
+          }
+        }
+      }
+    };
+
     if (selectedImage) {
       document.addEventListener('keydown', handleKeyPress);
+      document.addEventListener('touchstart', handleTouchStart);
+      document.addEventListener('touchend', handleTouchEnd);
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [selectedImage, orientationMap]);
 
