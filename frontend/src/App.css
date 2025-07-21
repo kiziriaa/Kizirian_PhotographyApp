@@ -105,6 +105,19 @@ body {
   color: #e0e0e0 !important;
 }
 
+body.home-page h1 {
+  color: black;
+}
+body.gallery-page h1 {
+  color: black;
+}
+body.contact-page h1 {
+  color: black;
+}
+body.booking-page h1 {
+  color: black;
+}
+
 .navbar-light {
   background-color: #2a2a2a !important;
   border-bottom: 1px solid #404040;
