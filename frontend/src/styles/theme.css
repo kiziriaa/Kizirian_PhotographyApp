@@ -23,6 +23,12 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+  
+  /* Text readability improvements */
+  --text-shadow-strong: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  --text-shadow-medium: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+  --overlay-light: rgba(255, 255, 255, 0.1);
 }
 
 /* Light Theme */
@@ -617,4 +623,135 @@ p, .form-text, small {
   100% {
     background-position: -200% 0;
   }
+}
+
+/* Hero Section Text Readability Improvements */
+.hero-section, .text-center h1, .text-center .lead {
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-dark);
+  backdrop-filter: var(--backdrop-blur);
+  border-radius: var(--border-radius);
+  z-index: -1;
+}
+
+/* Main headings with enhanced readability */
+h1 {
+  text-shadow: var(--text-shadow-strong) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
+  position: relative;
+}
+
+h1::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000000;
+  z-index: -1;
+  text-shadow: 2px 2px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000;
+}
+
+/* Lead text improvements */
+.lead {
+  text-shadow: var(--text-shadow-medium) !important;
+  color: #ffffff !important;
+  background: var(--overlay-dark);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--backdrop-blur);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Hero section container improvements */
+.text-center.mb-5 {
+  background: var(--overlay-dark);
+  backdrop-filter: var(--backdrop-blur);
+  padding: var(--spacing-xxl);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-xxl) !important;
+}
+
+/* Page titles (h1) across all pages */
+.container h1 {
+  color: #ffffff !important;
+  text-shadow: var(--text-shadow-strong) !important;
+  background: var(--overlay-dark) !important;
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  border-radius: var(--border-radius) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+  margin-bottom: var(--spacing-xl) !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+}
+
+/* Footer improvements */
+.footer {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(44, 24, 16, 0.95) 100%) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+  border-top: 3px solid var(--accent-primary) !important;
+  color: #ffffff !important;
+}
+
+.footer h5 {
+  color: var(--accent-primary) !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+.footer p, .footer .text-muted {
+  color: #e0e0e0 !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+.footer a {
+  color: var(--accent-primary) !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+.footer a:hover {
+  color: #ffffff !important;
+  text-shadow: var(--text-shadow-strong) !important;
+}
+
+/* Card headers improvements */
+.card-header h5, .card-header h4 {
+  color: #ffffff !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+/* Breadcrumb improvements */
+.breadcrumb {
+  background: var(--overlay-dark) !important;
+  backdrop-filter: var(--backdrop-blur) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  border-radius: var(--border-radius) !important;
+}
+
+.breadcrumb a, .breadcrumb-item {
+  color: #ffffff !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+/* Alert improvements */
+.alert {
+  backdrop-filter: var(--backdrop-blur) !important;
+  text-shadow: var(--text-shadow-medium) !important;
+}
+
+/* Button text improvements */
+.btn {
+  text-shadow: var(--text-shadow-medium) !important;
 }
