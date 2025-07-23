@@ -224,8 +224,8 @@ function Services() {
       <div className="text-center">
         <h3 className="mb-3">Ready to Book Your Session?</h3>
         <p className="mb-4">Let's create beautiful memories together. Choose your session type and schedule today.</p>
-        <div className="mb-4">
-          <Link to="/booking" className="btn btn-primary btn-lg me-3">
+        <div className="mb-4 d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+          <Link to="/booking" className="btn btn-primary btn-lg">
             Book Your Session
           </Link>
           <Link to="/contact" className="btn btn-outline-primary btn-lg">

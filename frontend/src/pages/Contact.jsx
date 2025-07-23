@@ -113,7 +113,7 @@ function Contact() {
               <div id="email-help" className="form-text">We'll respond to this email address within 24 hours</div>
             </div>
 
-            <div className="mb-3">
+            <div className="mb-4">
               <label className="form-label">Message *</label>
               <textarea
                 name="message"
@@ -128,6 +128,7 @@ function Contact() {
               <div id="message-help" className="form-text">Tell us about your vision, preferences, and any specific requirements</div>
             </div>
 
+            <div className="d-grid d-md-block">
             <button
               type="submit"
               className="btn btn-primary btn-lg"
@@ -143,6 +144,7 @@ function Contact() {
                 "Send Message"
               )}
             </button>
+            </div>
 
             {status && (
               <div className={`alert mt-3 ${status.includes("successfully") ? "alert-success" : "alert-danger"}`}>

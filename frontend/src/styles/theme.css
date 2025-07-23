@@ -781,14 +781,14 @@ h1 {
 }
 
 .logo-primary {
-  font-size: 1.6rem;
+  font-size: 3.2rem;
   font-weight: 700;
   color: #000000;
   letter-spacing: -0.02em;
 }
 
 .logo-secondary {
-  font-size: 0.85rem;
+  font-size: 1.7rem;
   font-weight: 500;
   color: #666666;
   text-transform: uppercase;
@@ -798,34 +798,34 @@ h1 {
 
 /* Logo size variations */
 .logo-small .logo-svg {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
 }
 
 .logo-small .logo-primary {
-  font-size: 1.4rem;
+  font-size: 2.8rem;
 }
 
 .logo-small .logo-secondary {
-  font-size: 0.75rem;
+  font-size: 1.5rem;
 }
 
 .logo-medium .logo-svg {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
 }
 
 .logo-large .logo-svg {
-  width: 48px;
-  height: 48px;
+  width: 96px;
+  height: 96px;
 }
 
 .logo-large .logo-primary {
-  font-size: 1.8rem;
+  font-size: 3.6rem;
 }
 
 .logo-large .logo-secondary {
-  font-size: 0.95rem;
+  font-size: 1.9rem;
 }
 
 /* Navbar improvements */
@@ -840,11 +840,11 @@ h1 {
 /* Responsive logo adjustments */
 @media (max-width: 768px) {
   .logo-primary {
-    font-size: 1.2rem;
+    font-size: 2.4rem;
   }
   
   .logo-secondary {
-    font-size: 0.7rem;
+    font-size: 1.4rem;
   }
   
   .logo-container {

@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import Logo from './Logo'
 
 function Navbar() {
+  useEffect(() => {
+    // Auto-collapse navbar on mobile when navigation links are clicked
+    const navbarCollapse = document.getElementById('navbarNav');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .dropdown-item');
+    
+    const handleNavLinkClick = () => {
+      if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+        const bsCollapse = new window.bootstrap.Collapse(navbarCollapse, {
+          toggle: false
+        });
+        bsCollapse.hide();
+      }
+    };
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', handleNavLinkClick);
+    });
+
+    return () => {
+      navLinks.forEach(link => {
+        link.removeEventListener('click', handleNavLinkClick);
+      });
+    };
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light sticky-top shadow-lg">
       <div className="container">

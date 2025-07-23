@@ -18,8 +18,8 @@ function Home() {
         <p className="lead">
           At Kizirian Photography, we specialize in creating timeless, heartfelt imagery that tells your unique story. From family portraits to professional headshots, we capture the moments that matter most.
         </p>
-        <div className="mt-4">
-          <Link to="/booking" className="btn btn-primary btn-lg me-3">
+        <div className="mt-4 d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+          <Link to="/booking" className="btn btn-primary btn-lg">
             Book Your Session
           </Link>
           <Link to="/gallery" className="btn btn-outline-primary btn-lg">
@@ -85,8 +85,8 @@ function Home() {
             <strong>Special Events</strong><br/><small className="text-muted">Contact for pricing</small>
           </div>
         </div>
-        <div className="mt-3">
-          <Link to="/services" className="btn btn-primary me-2">View All Services</Link>
+        <div className="mt-3 d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+          <Link to="/services" className="btn btn-primary">View All Services</Link>
           <Link to="/booking" className="btn btn-outline-primary">Book Session</Link>
         </div>
       </div>
