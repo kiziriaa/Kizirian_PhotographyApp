@@ -49,6 +49,17 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink 
+                to="/services" 
+                className={({ isActive }) => 
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
+                }
+                aria-label="Photography services and packages"
+              >
+                Services
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
                 to="/gallery" 
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
@@ -56,6 +67,62 @@ function Navbar() {
                 aria-label="View photography gallery"
               >
                 Gallery
+              </NavLink>
+            </li>
+            <li className="nav-item dropdown">
+              <a 
+                className="nav-link dropdown-toggle px-3 py-2 rounded mx-1" 
+                href="#" 
+                id="navbarDropdown" 
+                role="button" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+                aria-label="More pages and resources"
+              >
+                More
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <NavLink 
+                    to="/blog" 
+                    className="dropdown-item"
+                    aria-label="Photography blog and recent work"
+                  >
+                    Blog & Recent Work
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink 
+                    to="/faq" 
+                    className="dropdown-item"
+                    aria-label="Frequently asked questions"
+                  >
+                    FAQ
+                  </NavLink>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <a 
+                    className="dropdown-item" 
+                    href="https://instagram.com/kizirian_photography" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Follow us on Instagram (opens in new tab)"
+                  >
+                    Instagram
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                to="/contact" 
+                className={({ isActive }) => 
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
+                }
+                aria-label="Contact information and form"
+              >
+                Contact
               </NavLink>
             </li>
             <li className="nav-item">
@@ -69,33 +136,10 @@ function Navbar() {
                   }`
                 }
                 aria-label="Book a photography session"
-                style={{ whiteSpace: 'nowrap' }} // force one line
+                style={{ whiteSpace: 'nowrap' }}
               >
                 Book Now
               </NavLink>
-            </li>
-
-            <li className="nav-item">
-              <NavLink 
-                to="/contact" 
-                className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
-                }
-                aria-label="Contact information and form"
-              >
-                Contact
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <a 
-                href="https://instagram.com/kizirian_photography" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="nav-link px-3 py-2 rounded mx-1"
-                aria-label="Follow us on Instagram (opens in new tab)"
-              >
-                Instagram
-              </a>
             </li>
           </ul>
         </div>

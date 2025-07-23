@@ -717,3 +717,32 @@ h1 {
 .alert {
   color: #000000 !important;
 }
+
+/* Gallery hover effects */
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-card:hover .gallery-overlay {
+  opacity: 1 !important;
+}
+
+.gallery-overlay {
+  background: linear-gradient(to bottom, 
+    rgba(0,0,0,0.7) 0%, 
+    rgba(0,0,0,0) 30%, 
+    rgba(0,0,0,0) 70%, 
+    rgba(0,0,0,0.8) 100%);
+}
+
+/* Mobile gallery improvements */
+@media (max-width: 768px) {
+  .gallery-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(to bottom, 
+      rgba(0,0,0,0.5) 0%, 
+      rgba(0,0,0,0) 50%, 
+      rgba(0,0,0,0.8) 100%);
+  }
+}

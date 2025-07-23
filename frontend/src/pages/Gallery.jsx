@@ -300,23 +300,32 @@ Thank you!`;
                   onLoadStart={() => setImageLoading(prev => ({ ...prev, [img.src]: true }))}
                 />
                 
-                {/* Purchase Button for Available Images */}
-                {img.available && (
-                  <div className="position-absolute top-0 end-0 m-2">
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={(e) => handlePurchaseClick(e, img)}
+                {/* Action Buttons Overlay */}
+                <div className="gallery-overlay position-absolute w-100 h-100 d-flex flex-column justify-content-between p-2" style={{opacity: 0, transition: 'opacity 0.3s ease'}}>
+                  <div className="d-flex justify-content-end">
+                    {img.available && (
+                      <button
+                        className="btn btn-success btn-sm me-2"
+                        onClick={(e) => handlePurchaseClick(e, img)}
+                        style={{ fontSize: "0.75rem" }}
+                        aria-label={`Purchase print of ${img.filename}`}
+                      >
+                        Buy Print
+                      </button>
+                    )}
+                    <Link
+                      to={`/booking?style=${img.category.toLowerCase()}`}
+                      className="btn btn-primary btn-sm"
                       style={{ fontSize: "0.75rem" }}
-                      aria-label={`Purchase print of ${img.filename}`}
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      Buy Print
-                    </button>
+                      Book This Style
+                    </Link>
                   </div>
-                )}
-                
-                {/* Category Badge */}
-                <div className="position-absolute bottom-0 start-0 m-2">
-                  <span className="badge bg-primary">{img.category}</span>
+                  <div className="d-flex justify-content-between align-items-end">
+                    <span className="badge bg-primary">{img.category}</span>
+                    <small className="text-white bg-dark px-2 py-1 rounded">{img.filename}</small>
+                  </div>
                 </div>
               </div>
               

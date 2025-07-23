@@ -28,97 +28,67 @@ function Home() {
         </div>
       </div>
 
-      {/* Welcome Message */}
-      <div className="alert alert-info text-center mb-5">
-        <h4 className="mb-2">Welcome to Kizirian Photography</h4>
-        <p className="mb-0">Professional photography services with quick turnaround and personalized attention.</p>
-      </div>
 
-      {/* Session Packages */}
+      {/* Featured Work */}
       <div className="row mb-5">
         <div className="col-12 text-center mb-4">
-          <h2>Session Packages</h2>
-          <p className="text-muted">Professional photography packages designed for your needs</p>
+          <h2>Featured Work</h2>
+          <p className="text-muted">Recent sessions showcasing our photography style</p>
         </div>
         <div className="col-md-4 mb-4">
           <div className="card h-100">
-            <div className="card-header text-center">
-              <h4 className="card-title mb-0">Headshot Session</h4>
-            </div>
+            <img src={portraitImage} className="card-img-top" alt="Family Portrait" style={{height: '300px', objectFit: 'cover'}} />
             <div className="card-body text-center">
-              <div className="h3 text-success mb-3">$115</div>
-              <ul className="list-unstyled">
-                <li>✓ 1-hour studio or outdoor session</li>
-                <li>✓ 3-5 outfit changes</li>
-                <li>✓ Professional editing</li>
-                <li>✓ 10+ high-resolution images</li>
-                <li>✓ 48-hour delivery</li>
-              </ul>
-              <p className="text-muted small">Perfect for LinkedIn, corporate websites, and personal branding</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-4">
-          <div className="card h-100 border-primary">
-            <div className="card-header text-center bg-primary text-white">
-              <h4 className="card-title mb-0">Family Session</h4>
-              <small>Most Popular</small>
-            </div>
-            <div className="card-body text-center">
-              <div className="h3 text-success mb-3">$225</div>
-              <ul className="list-unstyled">
-                <li>✓ 1.5-hour session</li>
-                <li>✓ Multiple locations/poses</li>
-                <li>✓ Professional editing</li>
-                <li>✓ 25+ high-resolution images</li>
-                <li>✓ Online gallery access</li>
-                <li>✓ 72-hour delivery</li>
-              </ul>
-              <p className="text-muted small">Capture precious moments with your loved ones</p>
+              <h5 className="card-title">Family Portraits</h5>
+              <p className="card-text">Capturing natural moments and genuine connections</p>
+              <Link to="/gallery?category=Family" className="btn btn-outline-primary btn-sm">View Gallery</Link>
             </div>
           </div>
         </div>
         <div className="col-md-4 mb-4">
           <div className="card h-100">
-            <div className="card-header text-center">
-              <h4 className="card-title mb-0">Couples Session</h4>
-            </div>
+            <img src={portraitImage} className="card-img-top" alt="Professional Headshot" style={{height: '300px', objectFit: 'cover'}} />
             <div className="card-body text-center">
-              <div className="h3 text-success mb-3">$190</div>
-              <ul className="list-unstyled">
-                <li>✓ 1-hour session</li>
-                <li>✓ Engagement or couples photos</li>
-                <li>✓ Professional editing</li>
-                <li>✓ 20+ high-resolution images</li>
-                <li>✓ Print release included</li>
-                <li>✓ 48-hour delivery</li>
-              </ul>
-              <p className="text-muted small">Perfect for engagements, anniversaries, and couples portraits</p>
+              <h5 className="card-title">Professional Headshots</h5>
+              <p className="card-text">Corporate and personal branding photography</p>
+              <Link to="/gallery?category=Headshots" className="btn btn-outline-primary btn-sm">View Gallery</Link>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
+            <img src={portraitImage} className="card-img-top" alt="Wedding Photography" style={{height: '300px', objectFit: 'cover'}} />
+            <div className="card-body text-center">
+              <h5 className="card-title">Wedding Photography</h5>
+              <p className="card-text">Documenting your most important day</p>
+              <Link to="/services#wedding" className="btn btn-outline-primary btn-sm">Learn More</Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Additional Services */}
+      {/* Services Teaser */}
       <div className="alert alert-light text-center mb-5">
-        <h5 className="mb-2">Additional Services Available</h5>
-        <div className="row">
+        <h5 className="mb-2">Photography Services</h5>
+        <p className="mb-3">Professional photography starting at <strong>$115</strong></p>
+        <div className="row text-center">
           <div className="col-md-3 mb-2">
-            <strong>Pet Photos:</strong> $150
+            <strong>Headshots</strong><br/><small className="text-muted">Starting at $115</small>
           </div>
           <div className="col-md-3 mb-2">
-            <strong>Senior Photos:</strong> $115
+            <strong>Family Sessions</strong><br/><small className="text-muted">Starting at $225</small>
           </div>
           <div className="col-md-3 mb-2">
-            <strong>Holiday Mini:</strong> $90
+            <strong>Weddings</strong><br/><small className="text-muted">Custom packages</small>
           </div>
           <div className="col-md-3 mb-2">
-            <strong>Custom Sessions:</strong> Contact for pricing
+            <strong>Special Events</strong><br/><small className="text-muted">Contact for pricing</small>
           </div>
         </div>
-        <small className="text-muted d-block mt-2">
-          All sessions include professional editing, high-resolution files, and personal consultation
-        </small>
+        <div className="mt-3">
+          <Link to="/services" className="btn btn-primary me-2">View All Services</Link>
+          <Link to="/booking" className="btn btn-outline-primary">Book Session</Link>
+        </div>
       </div>
 
       {/* Testimonials Section */}
@@ -181,67 +151,55 @@ function Home() {
       </div>
 
       {/* About Preview Section */}
-      <div className="row align-items-center mb-5">
-        <div className="col-md-6 mb-4 mb-md-0">
-          <img src={portraitImage} alt="Alex Kizirian" className="img-fluid rounded shadow" />
-        </div>
-        <div className="col-md-6">
-          <h2>Meet Alex Kizirian</h2>
-          <p>
-            Houston-based photographer specializing in portraits, family photography, and professional headshots. With experience across multiple photography disciplines, I bring technical expertise and creative vision to every session.
-          </p>
-          <div className="mt-4">
-            <Link to="/about" className="btn btn-primary me-3">
-              Learn More
-            </Link>
-            <Link to="/contact" className="btn btn-outline-primary">
-              Get in Touch
-            </Link>
-          </div>
-        </div>
+      <div className="text-center mb-5">
+        <h2>About Kizirian Photography</h2>
+        <p className="lead">Houston-based photographer specializing in capturing life's most precious moments</p>
+        <Link to="/about" className="btn btn-primary">Meet Alex →</Link>
       </div>
 
-      {/* Why Choose Us Section */}
-      <div className="row mb-5">
-        <div className="col-12 text-center mb-4">
-          <h2>Why Choose Kizirian Photography?</h2>
+
+      {/* Urgency/Scarcity Section */}
+      <div className="alert alert-warning text-center mb-5">
+        <h5 className="mb-2">⏰ Limited Availability This Month</h5>
+        <p className="mb-3">Only 8 session slots remaining in January 2025. Book now to secure your preferred date!</p>
+        <small className="text-muted">New client discount available - 25% off your first session</small>
+      </div>
+
+      {/* Trust Signals */}
+      <div className="row mb-5 text-center">
+        <div className="col-md-3 mb-3">
+          <div className="h4 text-primary">500+</div>
+          <small className="text-muted">Happy Clients</small>
         </div>
-        <div className="col-md-4 text-center mb-4">
-          <div className="display-1 text-primary">⏱️</div>
-          <h4>Quick Turnaround</h4>
-          <p className="text-muted">Receive your edited photos within 48-72 hours</p>
+        <div className="col-md-3 mb-3">
+          <div className="h4 text-primary">48-72hrs</div>
+          <small className="text-muted">Delivery Time</small>
         </div>
-        <div className="col-md-4 text-center mb-4">
-          <div className="display-1 text-primary">✓</div>
-          <h4>Professional Quality</h4>
-          <p className="text-muted">High-resolution images perfect for print and digital use</p>
+        <div className="col-md-3 mb-3">
+          <div className="h4 text-primary">5★</div>
+          <small className="text-muted">Average Rating</small>
         </div>
-        <div className="col-md-4 text-center mb-4">
-          <div className="display-1 text-primary">★</div>
-          <h4>Personalized Experience</h4>
-          <p className="text-muted">Every session is tailored to your unique style and needs</p>
+        <div className="col-md-3 mb-3">
+          <div className="h4 text-primary">3+ Years</div>
+          <small className="text-muted">Experience</small>
         </div>
       </div>
 
       {/* CTA Section */}
       <div className="text-center cta-section">
-        <h3 className="mb-3">Ready to Schedule Your Session?</h3>
-        <p className="mb-4">Contact us to discuss your photography needs and schedule your session.</p>
-        <div className="mb-3">
+        <h3 className="mb-3">Ready to Create Beautiful Memories?</h3>
+        <p className="mb-4">Join hundreds of satisfied clients who chose Kizirian Photography for their special moments.</p>
+        <div className="mb-4">
           <Link to="/booking" className="btn btn-primary btn-lg me-3">
-            Book Now
+            Book Your Session Now
           </Link>
-          <a 
-            href="https://instagram.com/kizirian_photography" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="btn btn-outline-primary btn-lg"
-          >
-            Follow on Instagram
-          </a>
+          <Link to="/gallery" className="btn btn-outline-primary btn-lg">
+            View Our Work
+          </Link>
         </div>
-        <div className="small">
-          Follow <a href="https://instagram.com/kizirian_photography" target="_blank" rel="noopener noreferrer" className="text-decoration-none">@kizirian_photography</a> for latest work and behind-the-scenes content!
+        <div className="small text-muted">
+          🔒 Secure booking • 📞 Free consultation • 💯 Satisfaction guaranteed<br/>
+          Follow <a href="https://instagram.com/kizirian_photography" target="_blank" rel="noopener noreferrer" className="text-decoration-none">@kizirian_photography</a> for daily updates!
         </div>
       </div>
     </div>
