@@ -26,29 +26,6 @@ function Navbar() {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <NavLink 
-                to="/" 
-                className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
-                } 
-                end
-                aria-label="Go to home page"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink 
-                to="/about" 
-                className={({ isActive }) => 
-                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
-                }
-                aria-label="About Alex Kizirian Photography"
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink 
                 to="/services" 
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
@@ -66,7 +43,7 @@ function Navbar() {
                 }
                 aria-label="View photography gallery"
               >
-                Gallery
+                Portfolio
               </NavLink>
             </li>
             <li className="nav-item dropdown">
@@ -79,16 +56,25 @@ function Navbar() {
                 aria-expanded="false"
                 aria-label="More pages and resources"
               >
-                More
+                Info
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <NavLink 
+                    to="/about" 
+                    className="dropdown-item"
+                    aria-label="About Alex Kizirian Photography"
+                  >
+                    About Alex
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink 
                     to="/blog" 
                     className="dropdown-item"
                     aria-label="Photography blog and recent work"
                   >
-                    Blog & Recent Work
+                    Recent Work
                   </NavLink>
                 </li>
                 <li>
@@ -109,7 +95,7 @@ function Navbar() {
                     rel="noopener noreferrer"
                     aria-label="Follow us on Instagram (opens in new tab)"
                   >
-                    Instagram
+                    <i className="fab fa-instagram me-2"></i>Instagram
                   </a>
                 </li>
               </ul>
@@ -132,13 +118,13 @@ function Navbar() {
                   `nav-link px-3 py-2 rounded mx-1 fw-bold ${
                     isActive
                       ? 'bg-primary text-white border border-primary'
-                      : 'bg-white border border-primary text-primary'
+                      : 'bg-primary text-white border border-primary'
                   }`
                 }
                 aria-label="Book a photography session"
                 style={{ whiteSpace: 'nowrap' }}
               >
-                Book Now
+                Book Session
               </NavLink>
             </li>
           </ul>

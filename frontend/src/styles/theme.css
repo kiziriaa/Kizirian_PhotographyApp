@@ -746,3 +746,108 @@ h1 {
       rgba(0,0,0,0.8) 100%);
   }
 }
+
+/* Logo Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-brand);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+}
+
+.logo-svg {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  transition: transform 0.2s ease;
+}
+
+.logo:hover .logo-svg {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo-primary {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.02em;
+}
+
+.logo-secondary {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: -2px;
+}
+
+/* Logo size variations */
+.logo-small .logo-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.logo-small .logo-primary {
+  font-size: 1.1rem;
+}
+
+.logo-small .logo-secondary {
+  font-size: 0.65rem;
+}
+
+.logo-medium .logo-svg {
+  width: 32px;
+  height: 32px;
+}
+
+.logo-large .logo-svg {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-large .logo-primary {
+  font-size: 1.6rem;
+}
+
+.logo-large .logo-secondary {
+  font-size: 0.85rem;
+}
+
+/* Navbar improvements */
+.navbar-brand {
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+}
+
+/* Responsive logo adjustments */
+@media (max-width: 768px) {
+  .logo-primary {
+    font-size: 1.2rem;
+  }
+  
+  .logo-secondary {
+    font-size: 0.7rem;
+  }
+  
+  .logo-container {
+    gap: 0.5rem;
+  }
+}
