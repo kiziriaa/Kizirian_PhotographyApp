@@ -310,192 +310,232 @@ function Booking() {
   return (
     <div className="container py-5">
       <Breadcrumbs />
-      <div className="text-center mb-5">
-        <h1>Book a Session</h1>
-        <p className="lead">Schedule your professional photography session with ease</p>
+      {/* Professional Header */}
+      <div className="booking-header text-center mb-5">
+        <h1 className="booking-title">Book Your Session</h1>
+        <p className="booking-subtitle">Let's create beautiful memories together</p>
+        <div className="booking-progress">
+          <div className="progress-step active">1. Contact Details</div>
+          <div className="progress-step">2. Session Info</div>
+          <div className="progress-step">3. Confirmation</div>
+        </div>
       </div>
 
       {/* New Client Offer */}
-      <div className="alert alert-info text-center mb-4">
-        <h6 className="mb-2">New Client Discount - 25% OFF</h6>
-        <div className="small">Limited time offer for first-time clients</div>
+      <div className="offer-banner">
+        <div className="offer-content">
+          <span className="offer-badge">New Client Special</span>
+          <span className="offer-text">25% OFF your first session</span>
+          <span className="offer-expiry">Limited time offer</span>
+        </div>
       </div>
 
-      <div className="row">
-        {/* Left Column - Form */}
-        <div className="col-lg-7">
-          <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">Full Name<span className="text-danger">*</span></label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="name" 
-            name="name" 
-            value={formData.name} 
-            onChange={handleChange} 
-            placeholder="Enter your full name (e.g., John Smith)"
-            required 
-          />
-        </div>
+      <div className="booking-layout">
+        {/* Main Form Section */}
+        <div className="booking-form-section">
+          <form onSubmit={handleSubmit} className="professional-form">
+            
+            {/* Contact Information Section */}
+            <div className="form-section">
+              <div className="section-header">
+                <h3 className="section-title">
+                  <i className="section-icon">👤</i>
+                  Contact Information
+                </h3>
+                <div className="section-divider"></div>
+              </div>
+              <div className="section-content">
+                <div className="row">
+                <div className="col-md-6 mb-4">
+                  <label htmlFor="name" className="form-label">Full Name<span className="text-danger">*</span></label>
+                  <input 
+                    type="text" 
+                    className="form-control form-control-professional" 
+                    id="name" 
+                    name="name" 
+                    value={formData.name} 
+                    onChange={handleChange} 
+                    placeholder="Your full name"
+                    required 
+                  />
+                </div>
 
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email Address<span className="text-danger">*</span></label>
-          <div className="input-group">
-            <input 
-              type="email" 
-              className="form-control" 
-              id="email" 
-              name="email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              placeholder="your.email@example.com"
-              required 
-            />
-            {!emailVerified && (
-              <button 
-                type="button" 
-                className="btn btn-outline-primary" 
-                onClick={sendVerificationCode}
-                disabled={sendingCode || !formData.email}
-                aria-label={sendingCode ? "Sending verification code" : "Send verification code"}
-              >
-                {sendingCode ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                    Sending...
-                  </>
-                ) : (
-                  "Verify"
-                )}
-              </button>
-            )}
-            {emailVerified && (
-              <span className="input-group-text text-success">
-                ✓ Verified
-              </span>
-            )}
-          </div>
-          <div className="form-text">
-            We'll send a verification code to confirm your email address
-            <br />
-            <small className="text-warning">
-              <strong>Note:</strong> Please check your spam/junk folder if you don't see the verification email within a few minutes
-            </small>
-          </div>
-        </div>
-
-        {verificationSent && !emailVerified && (
-          <div className="mb-3">
-            <label htmlFor="verificationCode" className="form-label">Enter Verification Code<span className="text-danger">*</span></label>
-            <div className="input-group">
-              <input 
-                type="text" 
-                className="form-control" 
-                id="verificationCode" 
-                value={verificationCode}
-                onChange={(e) => setVerificationCode(e.target.value)}
-                placeholder="6-digit code"
-                maxLength="6"
-                required
-              />
-              <button 
-                type="button" 
-                className="btn btn-primary" 
-                onClick={confirmVerification}
-                disabled={sendingCode || verificationCode.length !== 6}
-                aria-label={sendingCode ? "Verifying email code" : "Confirm email verification"}
-              >
-                {sendingCode ? (
-                  <>
-                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                    Verifying...
-                  </>
-                ) : (
-                  "Confirm"
-                )}
-              </button>
+                <div className="col-md-6 mb-4">
+                  <label htmlFor="email" className="form-label">Email Address<span className="text-danger">*</span></label>
+                  <div className="email-verification-group">
+                    <input 
+                      type="email" 
+                      className="form-control form-control-professional" 
+                      id="email" 
+                      name="email" 
+                      value={formData.email} 
+                      onChange={handleChange} 
+                      placeholder="your.email@example.com"
+                      required 
+                    />
+                    <div className="verification-status">
+                      {!emailVerified && (
+                        <button 
+                          type="button" 
+                          className="btn btn-verify" 
+                          onClick={sendVerificationCode}
+                          disabled={sendingCode || !formData.email}
+                        >
+                          {sendingCode ? "Sending..." : "Verify Email"}
+                        </button>
+                      )}
+                      {emailVerified && (
+                        <span className="verified-badge">
+                          <i className="check-icon">✓</i> Verified
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="form-helper">
+                    Email verification required for booking confirmation
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="form-text">
-              Check your email for the 6-digit verification code (expires in 10 minutes).
-              <br />
-              <small className="text-warning">
-                <strong>Don't see it?</strong> Check your spam/junk folder
-              </small>
-            </div>
-          </div>
-        )}
 
-        <div className="mb-3">
-          <label htmlFor="phone" className="form-label">Phone Number<span className="text-danger">*</span></label>
-          <input 
-            type="tel" 
-            className="form-control" 
-            id="phone" 
-            name="phone" 
-            value={formData.phone} 
-            onChange={handleChange} 
-            placeholder="(555) 123-4567"
-            required 
-          />
-          <div className="form-text">Contact phone number for scheduling questions</div>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="sessionType" className="form-label">Session Type<span className="text-danger">*</span></label>
-          <select className="form-select border" id="sessionType" name="sessionType" value={formData.sessionType} onChange={handleChange} required>
-            <option value="">Choose your session type (e.g., Couples, Engagements)</option>
-            <option value="Baby Photos">Baby Photos</option>
-            <option value="Bands">Bands</option>
-            <option value="Couples">Couples</option>
-            <option value="Engagements">Engagements</option>
-            <option value="Family">Family</option>
-            <option value="Professional Headshots">Professional Headshots</option>
-            <option value="Holiday Photos">Holiday Photos</option>
-            <option value="Pet Photos">Pet Photos</option>
-            <option value="Senior Photos">Senior Photos</option>
-          </select>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="duration" className="form-label">Duration (hours)<span className="text-danger">*</span></label>
-          <select className="form-select border" id="duration" name="duration" value={formData.duration} onChange={handleChange} required>
-            {[1, 2, 3, 4].map(d => (
-              <option key={d} value={d}>{d} {d === 1 ? "hour" : "hours"}</option>
-            ))}
-          </select>
-          <div className="form-text">Most portrait sessions are 1-2 hours. Longer sessions for multiple looks or locations.</div>
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="discountCode" className="form-label">Discount Code</label>
-          <input 
-            type="text" 
-            className="form-control" 
-            id="discountCode" 
-            value={sessionPricing.discountCode}
-            onChange={handleDiscountCodeChange}
-            placeholder="Optional: Enter Discount Code if available"
-            style={{ textTransform: 'uppercase' }}
-          />
-          <div className="form-text">
-            Enter your discount code if you have one
-            {sessionPricing.discountCode && !['SEMEISTVO', 'PRIATELI'].includes(sessionPricing.discountCode.toUpperCase()) && (
-              <span className="text-warning"> • Invalid discount code</span>
+            {verificationSent && !emailVerified && (
+              <div className="verification-section">
+                <div className="verification-card">
+                  <h4>Email Verification</h4>
+                  <p>Enter the 6-digit code sent to your email</p>
+                  <div className="verification-input-group">
+                    <input 
+                      type="text" 
+                      className="form-control verification-input" 
+                      value={verificationCode}
+                      onChange={(e) => setVerificationCode(e.target.value)}
+                      placeholder="000000"
+                      maxLength="6"
+                      required
+                    />
+                    <button 
+                      type="button" 
+                      className="btn btn-primary" 
+                      onClick={confirmVerification}
+                      disabled={sendingCode || verificationCode.length !== 6}
+                    >
+                      {sendingCode ? "Verifying..." : "Confirm"}
+                    </button>
+                  </div>
+                  <div className="verification-help">
+                    <small>Check your spam folder if you don't see the email</small>
+                  </div>
+                </div>
+              </div>
             )}
-          </div>
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="date" className="form-label">Preferred Day<span className="text-danger">*</span></label>
-          <input type="date" className="form-control" id="date" name="date" value={formData.date} min={minDate} max={maxDate} onChange={handleChange} required />
-          {selectedDateDisplay && (
-            <div className="form-text">Selected: {selectedDateDisplay}</div>
-          )}
-          {!formData.date && (
-            <div className="form-text">Choose a date at least 2 days in advance</div>
-          )}
-        </div>
+            {/* Session Details Section */}
+            <div className="form-section">
+              <div className="section-header">
+                <h3 className="section-title">
+                  <i className="section-icon">📱</i>
+                  Contact & Session Details
+                </h3>
+                <div className="section-divider"></div>
+              </div>
+              <div className="section-content">
+                <div className="row">
+                  <div className="col-md-6 mb-4">
+                    <label htmlFor="phone" className="form-label">Phone Number<span className="text-danger">*</span></label>
+                    <input 
+                      type="tel" 
+                      className="form-control form-control-professional" 
+                      id="phone" 
+                      name="phone" 
+                      value={formData.phone} 
+                      onChange={handleChange} 
+                      placeholder="(555) 123-4567"
+                      required 
+                    />
+                    <div className="form-helper">For scheduling confirmations</div>
+                  </div>
+
+                  <div className="col-md-6 mb-4">
+                    <label htmlFor="sessionType" className="form-label">Session Type<span className="text-danger">*</span></label>
+                    <select className="form-select form-control-professional" id="sessionType" name="sessionType" value={formData.sessionType} onChange={handleChange} required>
+                      <option value="">Select session type</option>
+                      <option value="Professional Headshots">Professional Headshots - $115</option>
+                      <option value="Family">Family Session - $225</option>
+                      <option value="Couples">Couples & Engagement - $190</option>
+                      <option value="Baby Photos">Baby Photos - $150</option>
+                      <option value="Senior Photos">Senior Photos - $115</option>
+                      <option value="Pet Photos">Pet Photos - $150</option>
+                      <option value="Holiday Photos">Holiday Mini Session - $90</option>
+                      <option value="Bands">Band/Group Session - $150</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div className="row">
+
+                  <div className="col-md-4 mb-4">
+                    <label htmlFor="duration" className="form-label">Duration<span className="text-danger">*</span></label>
+                    <select className="form-select form-control-professional" id="duration" name="duration" value={formData.duration} onChange={handleChange} required>
+                      {[1, 2, 3, 4].map(d => (
+                        <option key={d} value={d}>{d} {d === 1 ? "hour" : "hours"}</option>
+                      ))}
+                    </select>
+                    <div className="form-helper">Session duration</div>
+                  </div>
+
+                  <div className="col-md-8 mb-4">
+                    <label htmlFor="discountCode" className="form-label">Discount Code <span className="optional-badge">Optional</span></label>
+                    <input 
+                      type="text" 
+                      className="form-control form-control-professional" 
+                      id="discountCode" 
+                      value={sessionPricing.discountCode}
+                      onChange={handleDiscountCodeChange}
+                      placeholder="Enter promo code"
+                      style={{ textTransform: 'uppercase' }}
+                    />
+                    <div className="form-helper">
+                      {sessionPricing.discountCode && !['SEMEISTVO', 'PRIATELI'].includes(sessionPricing.discountCode.toUpperCase()) && (
+                        <span className="text-warning">Invalid discount code</span>
+                      )}
+                      {!sessionPricing.discountCode && "Special codes for returning clients"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Scheduling Section */}
+            <div className="form-section">
+              <div className="section-header">
+                <h3 className="section-title">
+                  <i className="section-icon">📅</i>
+                  Scheduling
+                </h3>
+                <div className="section-divider"></div>
+              </div>
+              <div className="section-content">
+                <div className="row">
+                  <div className="col-md-6 mb-4">
+                    <label htmlFor="date" className="form-label">Preferred Date<span className="text-danger">*</span></label>
+                    <input 
+                      type="date" 
+                      className="form-control form-control-professional" 
+                      id="date" 
+                      name="date" 
+                      value={formData.date} 
+                      min={minDate} 
+                      max={maxDate} 
+                      onChange={handleChange} 
+                      required 
+                    />
+                    {selectedDateDisplay && (
+                      <div className="form-helper selected-date">📅 {selectedDateDisplay}</div>
+                    )}
+                    {!formData.date && (
+                      <div className="form-helper">Minimum 2 days advance booking</div>
+                    )}
+                  </div>
 
         <div className="mb-3">
           <label htmlFor="time" className="form-label">Preferred Time<span className="text-danger">*</span></label>
@@ -520,119 +560,169 @@ function Booking() {
                 </option>
               );
             })}
-          </select>
-          {checkingAvailability && (
-            <div className="form-text">
-              <small className="text-muted">Checking availability...</small>
+                    </select>
+                    {checkingAvailability && (
+                      <div className="form-helper">⏳ Checking availability...</div>
+                    )}
+                    {formData.time && timeSlotAvailability.get(formData.time)?.available === false && (
+                      <div className="form-helper text-danger">
+                        ❌ Time unavailable: {timeSlotAvailability.get(formData.time)?.conflictingEvent?.summary}
+                      </div>
+                    )}
+                    {formData.time && timeSlotAvailability.get(formData.time)?.available !== false && (
+                      <div className="form-helper text-success">✅ Time slot available</div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
-          {formData.time && timeSlotAvailability.get(formData.time)?.available === false && (
-            <div className="form-text text-danger">
-              <small>This time slot is unavailable due to: {timeSlotAvailability.get(formData.time)?.conflictingEvent?.summary}</small>
+
+            {/* Additional Information Section */}
+            <div className="form-section">
+              <div className="section-header">
+                <h3 className="section-title">
+                  <i className="section-icon">💭</i>
+                  Tell Us About Your Vision
+                </h3>
+                <div className="section-divider"></div>
+              </div>
+              <div className="section-content">
+                <div className="mb-4">
+                  <label htmlFor="notes" className="form-label">Session Details & Preferences <span className="optional-badge">Optional</span></label>
+                  <textarea 
+                    className="form-control form-control-professional" 
+                    id="notes" 
+                    name="notes" 
+                    rows="4" 
+                    value={formData.notes} 
+                    onChange={handleChange}
+                    placeholder="Share your vision: location preferences, style inspiration, special requests, props, wardrobe ideas, or any questions you have..."
+                  ></textarea>
+                  <div className="form-helper">Help us make your session perfect by sharing your ideas and preferences</div>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
 
-        <div className="mb-3">
-          <label htmlFor="notes" className="form-label">Additional Notes</label>
-          <textarea 
-            className="form-control" 
-            id="notes" 
-            name="notes" 
-            rows="3" 
-            value={formData.notes} 
-            onChange={handleChange}
-            placeholder="Tell us about your vision: location preferences, style, props, special requests, etc."
-          ></textarea>
-        </div>
+            {/* Submit Section */}
+            <div className="form-section submit-section">
+              <div className="submit-content">
+                <button 
+                  type="submit" 
+                  className="btn btn-book-session" 
+                  disabled={submitting || !emailVerified}
+                >
+                  {submitting ? (
+                    <>
+                      <span className="spinner-border spinner-border-sm me-2"></span>
+                      Processing Your Booking...
+                    </>
+                  ) : (
+                    <>
+                      <i className="submit-icon">📸</i>
+                      Book Your Session
+                    </>
+                  )}
+                </button>
+                <div className="submit-helper">
+                  🔒 Secure booking • 📧 Instant confirmation • 💯 Satisfaction guaranteed
+                </div>
+              </div>
+            </div>
 
-        <button 
-          type="submit" 
-          className="btn btn-primary w-100" 
-          disabled={submitting}
-          aria-label={submitting ? "Processing booking submission" : "Submit booking form"}
-        >
-          {submitting ? (
-            <>
-              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-              Submitting...
-            </>
-          ) : (
-            "Submit Booking"
-          )}
-        </button>
-
-        {status && (
-          <div className={`alert mt-3 ${status.includes("successful") ? "alert-success" : "alert-danger"}`}>
-            {status}
-            {status.includes("successful") && (
-              <div className="mt-2">
-                <small className="text-warning">
-                  <strong>Important:</strong> Don't forget to check your spam/junk folder if you don't see the confirmation email
-                </small>
+            {status && (
+              <div className={`status-message ${status.includes("successful") ? "status-success" : "status-error"}`}>
+                <div className="status-icon">
+                  {status.includes("successful") ? "✅" : "❌"}
+                </div>
+                <div className="status-content">
+                  <div className="status-text">{status}</div>
+                  {status.includes("successful") && (
+                    <div className="status-note">
+                      <strong>Important:</strong> Check your spam/junk folder if you don't see the confirmation email
+                    </div>
+                  )}
+                </div>
               </div>
             )}
-          </div>
-        )}
           </form>
         </div>
 
-        {/* Right Column - Sticky Pricing Panel */}
-        <div className="col-lg-5">
-          <div className="sticky-top" style={{ top: '2rem' }}>
-            <div className="card">
-              <div className="card-header">
-                <h5 className="mb-0">Your Session Summary</h5>
-              </div>
-              <div className="card-body">
-                {formData.sessionType ? (
-                  <div>
-                    <div className="mb-3">
-                      <strong>Session Type:</strong>
-                      <div className="text-muted">{formData.sessionType}</div>
+        {/* Professional Pricing Summary */}
+        <div className="booking-summary-section">
+          <div className="pricing-card sticky-pricing">
+            <div className="pricing-header">
+              <h4 className="pricing-title">Session Investment</h4>
+              <div className="pricing-subtitle">Professional Photography</div>
+            </div>
+            <div className="pricing-body">
+              {formData.sessionType ? (
+                <div className="pricing-details">
+                  <div className="pricing-item">
+                    <div className="pricing-label">Session Type</div>
+                    <div className="pricing-value">{formData.sessionType}</div>
+                  </div>
+                  <div className="pricing-item">
+                    <div className="pricing-label">Duration</div>
+                    <div className="pricing-value">{formData.duration} {formData.duration === "1" ? "hour" : "hours"}</div>
+                  </div>
+                  {formData.date && (
+                    <div className="pricing-item">
+                      <div className="pricing-label">Date</div>
+                      <div className="pricing-value">{selectedDateDisplay}</div>
                     </div>
-                    <div className="mb-3">
-                      <strong>Duration:</strong>
-                      <div className="text-muted">{formData.duration} {formData.duration === "1" ? "hour" : "hours"}</div>
+                  )}
+                  {formData.time && (
+                    <div className="pricing-item">
+                      <div className="pricing-label">Time</div>
+                      <div className="pricing-value">{availableTimes.find(t => t.value === formData.time)?.label}</div>
                     </div>
-                    {sessionPricing.discountCode && (
-                      <div className="mb-3">
-                        <strong>Discount Code:</strong>
-                        <div className="text-success">✓ {sessionPricing.discountCode}</div>
-                      </div>
-                    )}
-                    <hr />
-                    <div className="d-flex justify-content-between align-items-center mb-2">
+                  )}
+                  {sessionPricing.discountCode && (
+                    <div className="pricing-item discount-applied">
+                      <div className="pricing-label">Discount Code</div>
+                      <div className="pricing-value">✓ {sessionPricing.discountCode}</div>
+                    </div>
+                  )}
+                  <div className="pricing-divider"></div>
+                  <div className="pricing-breakdown">
+                    <div className="pricing-line">
                       <span>Hourly Rate:</span>
-                      <span className="fs-5">
+                      <span className="rate-display">
                         {sessionPricing.appliedDiscount > 0 && (
-                          <span className="text-decoration-line-through text-muted me-2">
-                            ${sessionPricing.baseRate}
-                          </span>
+                          <span className="original-rate">${sessionPricing.baseRate}</span>
                         )}
-                        <span className="text-success fw-bold">
-                          ${sessionPricing.finalRate}
-                        </span>
+                        <span className="final-rate">${sessionPricing.finalRate}</span>
                       </span>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <span className="fs-5 fw-bold">Total Cost:</span>
-                      <span className="fs-4 fw-bold text-success">
-                        ${sessionPricing.finalRate * parseInt(formData.duration)}
-                      </span>
+                    <div className="pricing-total">
+                      <span>Total Investment:</span>
+                      <span className="total-amount">${sessionPricing.finalRate * parseInt(formData.duration)}</span>
                     </div>
-                    {sessionPricing.appliedDiscount > 0 && (
-                      <div className="text-success small mt-2">
-                        Discount applied: ${(sessionPricing.baseRate - sessionPricing.finalRate) * parseInt(formData.duration)} savings
-                      </div>
-                    )}
                   </div>
-                ) : (
-                  <div className="text-muted">
-                    <p>Select a session type to see pricing details</p>
+                  {sessionPricing.appliedDiscount > 0 && (
+                    <div className="savings-notice">
+                      🎉 You save ${(sessionPricing.baseRate - sessionPricing.finalRate) * parseInt(formData.duration)}!
+                    </div>
+                  )}
+                  <div className="pricing-includes">
+                    <div className="includes-title">What's Included:</div>
+                    <ul className="includes-list">
+                      <li>✓ Professional consultation</li>
+                      <li>✓ Expert editing & retouching</li>
+                      <li>✓ High-resolution digital images</li>
+                      <li>✓ Online gallery access</li>
+                      <li>✓ Print release included</li>
+                      <li>✓ 48-72 hour delivery</li>
+                    </ul>
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="pricing-placeholder">
+                  <div className="placeholder-icon">📸</div>
+                  <p>Select your session type to see pricing details</p>
+                  <div className="starting-price">Sessions starting at <strong>$90</strong></div>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Logo = ({ size = 'medium', className = '' }) => {
     <div className={`logo ${sizeClasses[size]} ${className}`}>
       <div className="logo-container">
         <div className="logo-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" className="logo-svg">
+          <svg viewBox="0 0 32 32" className="logo-svg">
             <defs>
               <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#d4af37" />
