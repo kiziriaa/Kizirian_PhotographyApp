@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 function Contact() {
   const [searchParams] = useSearchParams();
@@ -68,6 +69,7 @@ function Contact() {
 
   return (
     <div className="container py-5">
+      <Breadcrumbs />
       {/* Header Section */}
       <div className="text-center mb-5">
         <h1>Get in Touch</h1>

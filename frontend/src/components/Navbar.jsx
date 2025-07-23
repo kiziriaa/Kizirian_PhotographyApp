@@ -38,6 +38,17 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink 
+                to="/about" 
+                className={({ isActive }) => 
+                  `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`
+                }
+                aria-label="About Alex Kizirian Photography"
+              >
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
                 to="/gallery" 
                 className={({ isActive }) => 
                   `nav-link px-3 py-2 rounded mx-1 ${isActive ? 'active' : ''}`

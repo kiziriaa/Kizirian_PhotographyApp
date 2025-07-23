@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 // Dynamically import all images from these folders
 const landscapeImports = import.meta.glob("../assets/Landscapes/*.{jpg,jpeg,png}", { eager: true });
@@ -37,34 +38,23 @@ const images = [
   ...toImageObjects(couplesImports, "Couples"),
 ];
 
-const mainCategories = [
-  { name: "Portfolio", description: "Professional portrait work and session examples" },
-  { name: "Print Shop", description: "Fine art prints available for purchase" }
-];
-
-const portfolioCategories = [
-  { name: "All Portfolio", description: "All professional portrait work" },
+const galleryCategories = [
+  { name: "All", description: "All photography work" },
   { name: "Headshots", description: "Corporate and personal headshots" },
   { name: "Family", description: "Family portrait sessions" },
   { name: "Couples", description: "Couple portrait sessions" },
-  { name: "Pet Photos", description: "Pet and animal photography" }
-];
-
-const printCategories = [
-  { name: "All Prints", description: "All available prints" },
-  { name: "Landscapes", description: "Nature & scenery prints" },
-  { name: "Wildlife", description: "Animal & nature prints" }
+  { name: "Pet Photos", description: "Pet and animal photography" },
+  { name: "Landscapes", description: "Nature & scenery photography" },
+  { name: "Wildlife", description: "Animal & nature photography" }
 ];
 
 function Gallery() {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedOrientation, setSelectedOrientation] = useState("landscape");
-  const [activeMainCategory, setActiveMainCategory] = useState("Portfolio");
-  const [activeSubCategory, setActiveSubCategory] = useState("All Portfolio");
-  const [viewCounts, setViewCounts] = useState({});
+  const [activeCategory, setActiveCategory] = useState("All");
   const [orientationMap, setOrientationMap] = useState({});
-  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [imageLoading, setImageLoading] = useState({});
 
   useEffect(() => {
     document.body.className = 'gallery-page';
@@ -108,10 +98,6 @@ function Gallery() {
         const prevImage = filtered[prevIndex];
         if (prevImage) {
           setSelectedImage(prevImage);
-          setViewCounts((prev) => ({
-            ...prev,
-            [prevImage.src]: (prev[prevImage.src] || 0) + 1,
-          }));
           setSelectedOrientation(orientationMap[prevImage.src] || "landscape");
         }
       } else if (event.key === 'ArrowRight') {
@@ -120,10 +106,6 @@ function Gallery() {
         const nextImage = filtered[nextIndex];
         if (nextImage) {
           setSelectedImage(nextImage);
-          setViewCounts((prev) => ({
-            ...prev,
-            [nextImage.src]: (prev[nextImage.src] || 0) + 1,
-          }));
           setSelectedOrientation(orientationMap[nextImage.src] || "landscape");
         }
       } else if (event.key === 'Escape') {
@@ -161,10 +143,6 @@ function Gallery() {
           const nextImage = filtered[nextIndex];
           if (nextImage) {
             setSelectedImage(nextImage);
-            setViewCounts((prev) => ({
-              ...prev,
-              [nextImage.src]: (prev[nextImage.src] || 0) + 1,
-            }));
             setSelectedOrientation(orientationMap[nextImage.src] || "landscape");
           }
         } else {
@@ -173,10 +151,6 @@ function Gallery() {
           const prevImage = filtered[prevIndex];
           if (prevImage) {
             setSelectedImage(prevImage);
-            setViewCounts((prev) => ({
-              ...prev,
-              [prevImage.src]: (prev[prevImage.src] || 0) + 1,
-            }));
             setSelectedOrientation(orientationMap[prevImage.src] || "landscape");
           }
         }
@@ -196,46 +170,20 @@ function Gallery() {
     };
   }, [selectedImage, orientationMap]);
 
-  // Filter images based on main category and sub-category
+  // Filter images based on selected category
   const getFilteredImages = () => {
-    if (activeMainCategory === "Portfolio") {
-      if (activeSubCategory === "All Portfolio") {
-        return images.filter(img => 
-          img.category === "Headshots" || 
-          img.category === "Family" || 
-          img.category === "Couples" ||
-          img.category === "Pet Photos"
-        );
-      } else {
-        return images.filter(img => img.category === activeSubCategory);
-      }
-    } else { // Print Shop
-      if (activeSubCategory === "All Prints") {
-        return images.filter(img => img.category === "Landscapes" || img.category === "Wildlife");
-      } else {
-        return images.filter(img => img.category === activeSubCategory);
-      }
+    if (activeCategory === "All") {
+      return images;
+    } else {
+      return images.filter(img => img.category === activeCategory);
     }
   };
 
   const filtered = getFilteredImages();
 
-  // Handle main category changes
-  const handleMainCategoryChange = (category) => {
-    setActiveMainCategory(category);
-    if (category === "Portfolio") {
-      setActiveSubCategory("All Portfolio");
-    } else {
-      setActiveSubCategory("All Prints");
-    }
-  };
 
   const handleImageClick = (img) => {
     setSelectedImage(img);
-    setViewCounts((prev) => ({
-      ...prev,
-      [img.src]: (prev[img.src] || 0) + 1,
-    }));
     setSelectedOrientation(orientationMap[img.src] || "landscape");
   };
 
@@ -255,17 +203,13 @@ function Gallery() {
     const newImage = filtered[newIndex];
     if (newImage) {
       setSelectedImage(newImage);
-      setViewCounts((prev) => ({
-        ...prev,
-        [newImage.src]: (prev[newImage.src] || 0) + 1,
-      }));
       setSelectedOrientation(orientationMap[newImage.src] || "landscape");
     }
   };
 
-  const handlePurchaseClick = (e) => {
+  const handlePurchaseClick = (e, img) => {
     e.stopPropagation();
-    setShowPurchaseModal(true);
+    handleContactForPricing(img);
   };
 
   const handleContactForPricing = (img) => {
@@ -291,84 +235,46 @@ Thank you!`;
 
   return (
     <div className="container py-5">
+      <Breadcrumbs />
       {/* Hero Section */}
       <div className="text-center mb-5">
         <h1>Photography Gallery</h1>
         <p className="lead">
-          Explore our portfolio of portraits, breathtaking landscapes, and wildlife photography
+          Explore our portfolio of portraits, landscapes, and wildlife photography
         </p>
       </div>
 
-      {/* Main Category Tabs */}
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="d-flex justify-content-center mb-4">
-            <div className="btn-group btn-group-lg" role="group">
-              {mainCategories.map((cat) => (
-                <button
-                  key={cat.name}
-                  className={`btn btn-outline-primary ${activeMainCategory === cat.name ? "active" : ""}`}
-                  onClick={() => handleMainCategoryChange(cat.name)}
-                >
-                  {cat.name}
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Conditional Banner Based on Active Tab */}
-          {activeMainCategory === "Portfolio" ? (
-            <div className="alert alert-info text-center mb-4">
-              <h5 className="mb-2">Professional Portfolio</h5>
-              <p className="mb-0">Examples of our portrait work and session styles. Ready to book your own session?</p>
-              <Link to="/booking" className="btn btn-primary btn-sm mt-2">
-                Book Your Session
-              </Link>
-            </div>
-          ) : (
-            <div className="alert alert-info text-center mb-4">
-              <h5 className="mb-2">Fine Art Print Shop</h5>
-              <p className="mb-0">Professional landscape and wildlife photography available for purchase.</p>
-              <small className="text-muted d-block mt-1">
-                <strong>Available formats:</strong> Digital downloads, Canvas prints, Metal prints, Traditional prints
-                <br />
-                <strong>Shipping:</strong> Included in print prices • Digital downloads instant
-              </small>
-            </div>
-          )}
-        </div>
+      {/* Welcome Banner */}
+      <div className="alert alert-info text-center mb-4">
+        <h5 className="mb-2">Professional Photography</h5>
+        <p className="mb-0">Browse our work and discover the style that's perfect for your needs.</p>
+        <Link to="/booking" className="btn btn-primary btn-sm mt-2">
+          Book Your Session
+        </Link>
       </div>
 
-      {/* Sub-Category Filters - Professional Style */}
+      {/* Category Filters */}
       <div className="row mb-5">
         <div className="col-12">
           <div className="filter-buttons">
-            {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories).map((cat) => (
+            {galleryCategories.map((cat) => (
               <button
                 key={cat.name}
-                className={`filter-btn ${activeSubCategory === cat.name ? "active" : ""}`}
-                onClick={() => setActiveSubCategory(cat.name)}
+                className={`filter-btn ${activeCategory === cat.name ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat.name)}
               >
-                {cat.name.replace("All Portfolio", "All").replace("All Prints", "All")}
+                {cat.name}
                 <span className="badge ms-2">
-                  {activeMainCategory === "Portfolio" ? 
-                    (cat.name === "All Portfolio" ? images.filter(img => 
-                      img.category === "Headshots" || 
-                      img.category === "Family" || 
-                      img.category === "Couples" ||
-                      img.category === "Pet Photos"
-                    ).length :
-                     images.filter(img => img.category === cat.name).length) :
-                    (cat.name === "All Prints" ? images.filter(img => img.category === "Landscapes" || img.category === "Wildlife").length :
-                     images.filter(img => img.category === cat.name).length)
+                  {cat.name === "All" ? 
+                    images.length :
+                    images.filter(img => img.category === cat.name).length
                   }
                 </span>
               </button>
             ))}
           </div>
-          <div className="text-center text-muted">
-            {(activeMainCategory === "Portfolio" ? portfolioCategories : printCategories)
-              .find(cat => cat.name === activeSubCategory)?.description}
+          <div className="text-center text-muted mt-2">
+            {galleryCategories.find(cat => cat.name === activeCategory)?.description}
           </div>
         </div>
       </div>
@@ -386,19 +292,20 @@ Thank you!`;
                 <img
                   src={img.src}
                   alt={`${img.category} photography by Kizirian Photography - ${img.filename}`}
-                  className="card-img-top img-fluid rounded"
+                  className={`card-img-top img-fluid rounded ${imageLoading[img.src] ? 'image-loading' : ''}`}
                   style={{ height: "200px", objectFit: "cover" }}
                   loading="lazy"
                   decoding="async"
+                  onLoad={() => setImageLoading(prev => ({ ...prev, [img.src]: false }))}
+                  onLoadStart={() => setImageLoading(prev => ({ ...prev, [img.src]: true }))}
                 />
-                <div className="watermark">© Kizirian Photography</div>
                 
                 {/* Purchase Button for Available Images */}
                 {img.available && (
                   <div className="position-absolute top-0 end-0 m-2">
                     <button
                       className="btn btn-success btn-sm"
-                      onClick={handlePurchaseClick}
+                      onClick={(e) => handlePurchaseClick(e, img)}
                       style={{ fontSize: "0.75rem" }}
                       aria-label={`Purchase print of ${img.filename}`}
                     >
@@ -413,16 +320,6 @@ Thank you!`;
                 </div>
               </div>
               
-              <div className="card-footer text-muted small">
-                <div className="d-flex justify-content-between align-items-center">
-                  <span>Views: {viewCounts[img.src] || 0}</span>
-                  {img.available && (
-                    <span className="text-success">
-                      <small>Contact for pricing</small>
-                    </span>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         ))}

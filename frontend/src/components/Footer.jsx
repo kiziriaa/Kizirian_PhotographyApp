@@ -27,6 +27,7 @@ function Footer() {
             <h6>Quick Links</h6>
             <ul className="list-unstyled">
               <li><Link to="/" className="text-decoration-none text-muted">Home</Link></li>
+              <li><Link to="/about" className="text-decoration-none text-muted">About</Link></li>
               <li><Link to="/gallery" className="text-decoration-none text-muted">Gallery</Link></li>
               <li><Link to="/booking" className="text-decoration-none text-muted">Book Session</Link></li>
               <li><Link to="/contact" className="text-decoration-none text-muted">Contact</Link></li>

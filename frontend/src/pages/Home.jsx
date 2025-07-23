@@ -34,55 +34,166 @@ function Home() {
         <p className="mb-0">Professional photography services with quick turnaround and personalized attention.</p>
       </div>
 
-      {/* Services Section */}
+      {/* Session Packages */}
       <div className="row mb-5">
         <div className="col-12 text-center mb-4">
-          <h2>Our Services</h2>
-          <p className="text-muted">Professional photography for every occasion</p>
+          <h2>Session Packages</h2>
+          <p className="text-muted">Professional photography packages designed for your needs</p>
         </div>
         <div className="col-md-4 mb-4">
           <div className="card h-100">
+            <div className="card-header text-center">
+              <h4 className="card-title mb-0">Headshot Session</h4>
+            </div>
             <div className="card-body text-center">
-              <h4 className="card-title">Professional Headshots</h4>
-              <p className="card-text">Perfect for LinkedIn, corporate websites, and personal branding</p>
-              <div className="h5 text-success">Starting at $75</div>
+              <div className="h3 text-success mb-3">$115</div>
+              <ul className="list-unstyled">
+                <li>✓ 1-hour studio or outdoor session</li>
+                <li>✓ 3-5 outfit changes</li>
+                <li>✓ Professional editing</li>
+                <li>✓ 10+ high-resolution images</li>
+                <li>✓ 48-hour delivery</li>
+              </ul>
+              <p className="text-muted small">Perfect for LinkedIn, corporate websites, and personal branding</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-4">
+          <div className="card h-100 border-primary">
+            <div className="card-header text-center bg-primary text-white">
+              <h4 className="card-title mb-0">Family Session</h4>
+              <small>Most Popular</small>
+            </div>
+            <div className="card-body text-center">
+              <div className="h3 text-success mb-3">$225</div>
+              <ul className="list-unstyled">
+                <li>✓ 1.5-hour session</li>
+                <li>✓ Multiple locations/poses</li>
+                <li>✓ Professional editing</li>
+                <li>✓ 25+ high-resolution images</li>
+                <li>✓ Online gallery access</li>
+                <li>✓ 72-hour delivery</li>
+              </ul>
+              <p className="text-muted small">Capture precious moments with your loved ones</p>
             </div>
           </div>
         </div>
         <div className="col-md-4 mb-4">
           <div className="card h-100">
-            <div className="card-body text-center">
-              <h4 className="card-title">Family Portraits</h4>
-              <p className="card-text">Capture precious moments with your loved ones</p>
-              <div className="h5 text-success">Starting at $150</div>
+            <div className="card-header text-center">
+              <h4 className="card-title mb-0">Couples Session</h4>
             </div>
-          </div>
-        </div>
-        <div className="col-md-4 mb-4">
-          <div className="card h-100">
             <div className="card-body text-center">
-              <h4 className="card-title">Special Events</h4>
-              <p className="card-text">Engagements, couples, baby photos, and more</p>
-              <div className="h5 text-success">Starting at $100</div>
+              <div className="h3 text-success mb-3">$190</div>
+              <ul className="list-unstyled">
+                <li>✓ 1-hour session</li>
+                <li>✓ Engagement or couples photos</li>
+                <li>✓ Professional editing</li>
+                <li>✓ 20+ high-resolution images</li>
+                <li>✓ Print release included</li>
+                <li>✓ 48-hour delivery</li>
+              </ul>
+              <p className="text-muted small">Perfect for engagements, anniversaries, and couples portraits</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* About Us Section */}
+      {/* Additional Services */}
+      <div className="alert alert-light text-center mb-5">
+        <h5 className="mb-2">Additional Services Available</h5>
+        <div className="row">
+          <div className="col-md-3 mb-2">
+            <strong>Pet Photos:</strong> $150
+          </div>
+          <div className="col-md-3 mb-2">
+            <strong>Senior Photos:</strong> $115
+          </div>
+          <div className="col-md-3 mb-2">
+            <strong>Holiday Mini:</strong> $90
+          </div>
+          <div className="col-md-3 mb-2">
+            <strong>Custom Sessions:</strong> Contact for pricing
+          </div>
+        </div>
+        <small className="text-muted d-block mt-2">
+          All sessions include professional editing, high-resolution files, and personal consultation
+        </small>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="row mb-5">
+        <div className="col-12 text-center mb-4">
+          <h2>What Clients Say</h2>
+          <p className="text-muted">Real feedback from real clients</p>
+        </div>
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
+              <div className="mb-3">
+                <div className="text-warning">
+                  ★★★★★
+                </div>
+              </div>
+              <p className="card-text fst-italic">
+                "Alex captured our family perfectly! The photos were natural and beautiful. Professional service from start to finish."
+              </p>
+              <footer className="blockquote-footer">
+                <small>Sarah M., Family Session</small>
+              </footer>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
+              <div className="mb-3">
+                <div className="text-warning">
+                  ★★★★★
+                </div>
+              </div>
+              <p className="card-text fst-italic">
+                "Outstanding headshots for my LinkedIn profile. Alex made me feel comfortable and the results exceeded my expectations."
+              </p>
+              <footer className="blockquote-footer">
+                <small>Michael R., Professional Headshots</small>
+              </footer>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
+            <div className="card-body text-center">
+              <div className="mb-3">
+                <div className="text-warning">
+                  ★★★★★
+                </div>
+              </div>
+              <p className="card-text fst-italic">
+                "Quick turnaround and amazing quality. The landscape prints I ordered look incredible in my office."
+              </p>
+              <footer className="blockquote-footer">
+                <small>Jennifer L., Print Purchase</small>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* About Preview Section */}
       <div className="row align-items-center mb-5">
         <div className="col-md-6 mb-4 mb-md-0">
           <img src={portraitImage} alt="Alex Kizirian" className="img-fluid rounded shadow" />
         </div>
         <div className="col-md-6">
-          <h2>About Me</h2>
+          <h2>Meet Alex Kizirian</h2>
           <p>
-            Hi, I'm Alex Kizirian — a Houston-based photographer specializing in portraits, family photography, and professional headshots. With experience in adventure, nature, and portrait photography, I bring technical expertise and creative vision to every session.
-          </p>
-          <p>
-            My approach focuses on capturing authentic moments and genuine expressions. I work closely with each client to understand their vision and deliver high-quality images that exceed expectations.
+            Houston-based photographer specializing in portraits, family photography, and professional headshots. With experience across multiple photography disciplines, I bring technical expertise and creative vision to every session.
           </p>
           <div className="mt-4">
+            <Link to="/about" className="btn btn-primary me-3">
+              Learn More
+            </Link>
             <Link to="/contact" className="btn btn-outline-primary">
               Get in Touch
             </Link>

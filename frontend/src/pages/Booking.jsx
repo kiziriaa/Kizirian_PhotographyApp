@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 function Booking() {
   useEffect(() => {
@@ -308,6 +309,7 @@ function Booking() {
 
   return (
     <div className="container py-5">
+      <Breadcrumbs />
       <div className="text-center mb-5">
         <h1>Book a Session</h1>
         <p className="lead">Schedule your professional photography session with ease</p>
