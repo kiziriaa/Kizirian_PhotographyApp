@@ -395,6 +395,7 @@ function Booking() {
                     Email verification required for booking confirmation
                   </div>
                 </div>
+                </div>
               </div>
             </div>
 
@@ -536,30 +537,30 @@ function Booking() {
                       <div className="form-helper">Minimum 2 days advance booking</div>
                     )}
                   </div>
-
-        <div className="mb-3">
-          <label htmlFor="time" className="form-label">Preferred Time<span className="text-danger">*</span></label>
-          <select className="form-select border" id="time" name="time" value={formData.time} onChange={handleChange} required>
-            <option value="">Select your preferred time (e.g., 10:00 AM)</option>
-            {availableTimes.map(({ label, value }) => {
-              const availability = timeSlotAvailability.get(value);
-              const isAvailable = availability?.available !== false;
-              const isUnavailable = availability?.available === false;
-              
-              return (
-                <option 
-                  key={value} 
-                  value={value}
-                  disabled={isUnavailable}
-                  style={{ 
-                    color: isUnavailable ? '#6c757d' : 'inherit',
-                    backgroundColor: isUnavailable ? '#f8f9fa' : 'inherit' 
-                  }}
-                >
-                  {label} {isUnavailable ? '(Unavailable)' : isAvailable && !checkingAvailability ? '(Available)' : ''}
-                </option>
-              );
-            })}
+                  
+                  <div className="col-md-6 mb-4">
+                    <label htmlFor="time" className="form-label">Preferred Time<span className="text-danger">*</span></label>
+                    <select className="form-select form-control-professional" id="time" name="time" value={formData.time} onChange={handleChange} required>
+                      <option value="">Select your preferred time</option>
+                      {availableTimes.map(({ label, value }) => {
+                        const availability = timeSlotAvailability.get(value);
+                        const isAvailable = availability?.available !== false;
+                        const isUnavailable = availability?.available === false;
+                        
+                        return (
+                          <option 
+                            key={value} 
+                            value={value}
+                            disabled={isUnavailable}
+                            style={{ 
+                              color: isUnavailable ? '#6c757d' : 'inherit',
+                              backgroundColor: isUnavailable ? '#f8f9fa' : 'inherit' 
+                            }}
+                          >
+                            {label} {isUnavailable ? '(Unavailable)' : isAvailable && !checkingAvailability ? '(Available)' : ''}
+                          </option>
+                        );
+                      })}
                     </select>
                     {checkingAvailability && (
                       <div className="form-helper">⏳ Checking availability...</div>
