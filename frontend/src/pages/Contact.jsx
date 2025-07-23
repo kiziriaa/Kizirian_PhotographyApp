@@ -156,15 +156,15 @@ function Contact() {
             <div className="col-md-6 col-lg-12 mb-4">
               <div className="card contact-info-card">
                 <div className="card-header">
-                  <h5 className="mb-0">📞 Contact Information</h5>
+                  <h5 className="mb-0">Contact Information</h5>
                 </div>
                 <div className="card-body">
               <div className="mb-3">
-                <h6>📧 Email</h6>
+                <h6>Email</h6>
                 <p className="text-muted">kizirianphotography@gmail.com</p>
               </div>
               <div className="mb-3">
-                <h6>📷 Instagram</h6>
+                <h6>Instagram</h6>
                 <p className="text-muted">
                   <a 
                     href="https://instagram.com/kizirian_photography" 
@@ -177,11 +177,11 @@ function Contact() {
                 </p>
               </div>
               <div className="mb-3">
-                <h6>📍 Service Area</h6>
+                <h6>Service Area</h6>
                 <p className="text-muted">Houston Metropolitan Area</p>
               </div>
               <div className="mb-3">
-                <h6>⏰ Response Time</h6>
+                <h6>Response Time</h6>
                 <p className="text-muted">Within 24 hours</p>
               </div>
               <hr />
@@ -202,7 +202,7 @@ function Contact() {
               {/* FAQ Section */}
               <div className="card">
                 <div className="card-header">
-                  <h5 className="mb-0">❓ Quick Questions</h5>
+                  <h5 className="mb-0">Frequently Asked Questions</h5>
                 </div>
                 <div className="card-body">
                   <div className="mb-3">

@@ -313,14 +313,10 @@ function Booking() {
         <p className="lead">Schedule your professional photography session with ease</p>
       </div>
 
-      {/* Early Bird Promotion - Top Banner */}
-      <div className="alert alert-warning text-center mb-4">
-        <h6 className="mb-2">Early Bird Special - 25% OFF</h6>
-        <div className="small">First 20 bookings only! 
-          <span className="badge bg-warning text-dark ms-2">
-            {Math.max(0, 20 - totalBookings)} spots left
-          </span>
-        </div>
+      {/* New Client Offer */}
+      <div className="alert alert-info text-center mb-4">
+        <h6 className="mb-2">New Client Discount - 25% OFF</h6>
+        <div className="small">Limited time offer for first-time clients</div>
       </div>
 
       <div className="row">
@@ -625,7 +621,7 @@ function Booking() {
                     </div>
                     {sessionPricing.appliedDiscount > 0 && (
                       <div className="text-success small mt-2">
-                        You saved ${(sessionPricing.baseRate - sessionPricing.finalRate) * parseInt(formData.duration)} with your discount!
+                        Discount applied: ${(sessionPricing.baseRate - sessionPricing.finalRate) * parseInt(formData.duration)} savings
                       </div>
                     )}
                   </div>
