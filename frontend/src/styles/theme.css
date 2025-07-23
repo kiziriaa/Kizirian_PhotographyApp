@@ -653,91 +653,67 @@ h1 {
 
 /* Lead text improvements */
 .lead {
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
   color: #000000 !important;
-  background: rgba(255, 255, 255, 0.9);
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--border-radius);
-  backdrop-filter: var(--backdrop-blur);
+  font-weight: 600 !important;
   margin: var(--spacing-lg) 0;
 }
 
 /* Hero section container improvements */
 .text-center.mb-5 {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: var(--backdrop-blur);
-  padding: var(--spacing-xxl);
-  border-radius: var(--border-radius);
   margin-bottom: var(--spacing-xxl) !important;
 }
 
 /* Page titles (h1) across all pages */
 .container h1 {
   color: #000000 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
-  background: rgba(255, 255, 255, 0.9) !important;
-  padding: var(--spacing-lg) var(--spacing-xl) !important;
-  border-radius: var(--border-radius) !important;
-  backdrop-filter: var(--backdrop-blur) !important;
+  font-weight: 700 !important;
   margin-bottom: var(--spacing-xl) !important;
 }
 
 /* Footer improvements */
 .footer {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: var(--backdrop-blur) !important;
   border-top: 3px solid var(--accent-primary) !important;
   color: #000000 !important;
 }
 
 .footer h5 {
   color: #000000 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+  font-weight: 700 !important;
 }
 
 .footer p, .footer .text-muted {
-  color: #333333 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+  color: #000000 !important;
+  font-weight: 500 !important;
 }
 
 .footer a {
-  color: var(--accent-primary) !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
 }
 
 .footer a:hover {
-  color: #000000 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+  color: var(--accent-primary) !important;
 }
 
 /* Card headers improvements */
-.card-header h5, .card-header h4 {
-  color: #ffffff !important;
-  text-shadow: var(--text-shadow-medium) !important;
+.card-header h5, .card-header h4, .card-title {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* Card body text improvements */
+.card-body h4, .card-body h5, .card-body h6 {
+  color: #000000 !important;
+  font-weight: 600 !important;
 }
 
 /* Breadcrumb improvements */
-.breadcrumb {
-  background: rgba(255, 255, 255, 0.9) !important;
-  backdrop-filter: var(--backdrop-blur) !important;
-  padding: var(--spacing-md) var(--spacing-lg) !important;
-  border-radius: var(--border-radius) !important;
-}
-
 .breadcrumb a, .breadcrumb-item {
   color: #000000 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+  font-weight: 500 !important;
 }
 
 /* Alert improvements */
 .alert {
-  backdrop-filter: var(--backdrop-blur) !important;
-  background: rgba(255, 255, 255, 0.9) !important;
   color: #000000 !important;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
-}
-
-/* Button text improvements */
-.btn {
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
 }
